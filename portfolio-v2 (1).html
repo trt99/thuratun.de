@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thura Tun | Payment Tester and IT Administrator in Frankfurt</title>
+<meta name="description" content="Freelance software tester and IT administrator in Frankfurt. Experienced payment tester with a large pool of real cards and bank accounts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F4F8;--surface:#FFFFFF;--ink:#0E1330;--muted:#545A78;--line:#DADDEA;--acc:#4B2FE0;--acc-ink:#FFFFFF;
+--display:"Sora","Segoe UI",Arial,sans-serif;--body:"Instrument Sans","Segoe UI",Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1026;--surface:#151B3A;--ink:#ECEFFF;--muted:#9AA3CC;--line:#262E57;--acc:#9A86FF;--acc-ink:#0B1026;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B1026;--surface:#151B3A;--ink:#ECEFFF;--muted:#9AA3CC;--line:#262E57;--acc:#9A86FF;--acc-ink:#0B1026;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);overflow-x:hidden}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:6px}
+.wrap{max-width:70rem;margin:0 auto;padding:0 1.25rem}
+#bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;width:100%;height:3px;background:var(--acc);transform-origin:left;transform:scaleX(0);z-index:50}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1.25rem 0}
+.logo{font:800 1.2rem var(--display);text-decoration:none}
+nav{display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink)}
+#theme{font:inherit;font-size:.9rem;background:none;color:var(--ink);border:1.5px solid var(--line);border-radius:99px;padding:.3rem .9rem;cursor:pointer}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:99px;font-weight:600;text-decoration:none;border:2px solid var(--ink);transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn svg{width:1.15em;height:1.15em;vertical-align:-.2em;margin-right:.55rem}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;padding:3rem 0 4rem}
+h1{font:800 clamp(2.5rem,6.4vw,4.9rem)/1.02 var(--display);letter-spacing:-.03em;margin:0 0 1.4rem}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
+.w>span{display:inline-block;animation:up .9s cubic-bezier(.2,.7,.2,1) backwards;animation-delay:calc(var(--i)*.07s + .1s)}
+.lede{font-size:1.2rem;color:var(--muted);max-width:33rem;margin:0 0 2rem;animation:rise .8s ease .6s backwards}
+.hero .btns{animation:rise .8s ease .8s backwards}
+.stage{position:relative;height:25rem;--tx:0px;--ty:0px}
+.pc{position:absolute;left:var(--l);top:var(--t);width:min(19rem,74%);aspect-ratio:1.586;border-radius:18px;padding:1.1rem 1.3rem;display:flex;flex-direction:column;justify-content:space-between;font:700 1.05rem var(--display);box-shadow:0 26px 40px -20px rgba(8,10,40,.55);outline:1px solid rgba(14,19,48,.18);outline-offset:-1px;transform:rotate(var(--r)) translate(calc(var(--tx)*var(--k)),calc(var(--ty)*var(--k)));transition:transform .3s ease-out;animation:deal .9s cubic-bezier(.2,.8,.2,1) backwards,float 6s ease-in-out infinite;animation-delay:calc(var(--i)*.16s + .3s),calc(var(--i)*-1.4s)}
+.pc small{font:500 .85rem var(--body);letter-spacing:.12em;opacity:.8}
+.chip{width:2.4rem;height:1.7rem;border-radius:5px;background:linear-gradient(135deg,#F2D27A,#C99A2E)}
+@keyframes up{from{transform:translateY(110%)}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+@keyframes deal{from{opacity:0;scale:.75}}
+@keyframes float{50%{translate:0 -12px}}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq{overflow:hidden;border-block:1px solid var(--line);padding:1.1rem 0}
+.mq-t{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mq span{font:700 clamp(1.3rem,3vw,2rem) var(--display);color:var(--muted);white-space:nowrap}
+.mq span::after{content:"";display:inline-block;width:.5rem;height:.5rem;margin:0 2rem;border-radius:50%;background:var(--acc);vertical-align:middle}
+section{padding:4.5rem 0}
+h2.s{font:800 clamp(1.8rem,4vw,2.8rem)/1.1 var(--display);letter-spacing:-.02em;margin:0 0 .8rem;max-width:40rem}
+.intro{color:var(--muted);max-width:38rem;margin:0 0 2.5rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:1rem;margin-bottom:2.5rem}
+.stat{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:1.2rem 1.3rem}
+.stat b{display:block;font:800 clamp(2.2rem,5vw,3.2rem)/1 var(--display);letter-spacing:-.03em}
+.stat span{color:var(--muted);font-size:.95rem}
+.lg{display:flex;gap:1.5rem;flex-wrap:wrap;margin:0 0 1.2rem;color:var(--muted);font-size:.95rem}
+.lg i{display:inline-block;width:.9rem;height:.9rem;border-radius:4px;background:var(--ink);margin-right:.5rem;vertical-align:-.1rem}
+.lg i.o{opacity:.4}
+.pm{display:grid;gap:.9rem}
+.row{display:grid;grid-template-columns:10.5rem 1fr 3.2rem;align-items:center;gap:1rem}
+.nm{font-weight:600}
+.nm small{display:block;font-weight:400;color:var(--muted);font-size:.85rem;line-height:1.3}
+.row>b{text-align:right;font-family:var(--display)}
+.bar{display:flex;height:1.6rem;background:var(--line);border-radius:8px;overflow:hidden}
+.seg{height:100%;width:0;background:var(--c);outline:1px solid color-mix(in srgb,var(--ink) 30%,transparent);outline-offset:-1px;transition:width 1.2s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.seg.ot{opacity:.5}
+.row.in .seg{width:var(--w)}
+.src{color:var(--muted);font-size:.9rem;margin:1.2rem 0 0;min-height:1.4rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.25rem}
+.sv{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:1.5rem}
+.sv h3{font:700 1.2rem var(--display);margin:0 0 .4rem}
+.sv p{margin:0;color:var(--muted)}
+.split p{font-size:1.25rem;max-width:44rem;margin:0}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.5rem}
+.steps li::before{content:"";display:block;height:4px;width:0;background:var(--acc);border-radius:4px;margin-bottom:1rem;transition:width 1s ease .2s}
+.steps li.in::before{width:100%}
+.steps b{display:block;font:700 1.15rem var(--display)}
+.steps span{color:var(--muted)}
+.contact h2{font:800 clamp(2rem,5vw,3.6rem)/1.05 var(--display);letter-spacing:-.025em;margin:0 0 1.8rem;max-width:36rem}
+footer{border-top:1px solid var(--line);padding:2rem 0 3rem;color:var(--muted);font-size:.95rem}
+.links{display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:.5rem}
+.legal{display:none;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:1.5rem;margin-top:2rem;max-width:44rem}
+.legal:target{display:block}
+.legal h2{font:700 1.3rem var(--display);margin:0 0 .6rem}
+.legal h3{font:700 1rem var(--display);margin:1.1rem 0 .3rem}
+.legal p{margin:.3rem 0;font-size:.95rem}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease,translate .25s,border-color .25s}
+.js .rv.in{opacity:1;transform:none}
+.sv:hover{translate:0 -5px;border-color:var(--acc)}
+@media (max-width:52rem){.hero{grid-template-columns:1fr;padding-top:1.5rem}.stage{height:26rem}.pc{width:min(17rem,68%)}.row{grid-template-columns:1fr auto;grid-template-areas:"n t" "b b";gap:.35rem .75rem}.nm{grid-area:n}.bar{grid-area:b}.row>b{grid-area:t;font-size:1.3rem}section{padding:3rem 0}.pm{gap:1.3rem}}
+@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}html{scroll-behavior:auto}#bar{display:none}}
+</style>
+<script>document.documentElement.className+=' js'</script>
+</head>
+<body>
+<div id="bar" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#top">Thura Tun</a>
+    <nav aria-label="Main">
+      <a href="#payments">Payment methods</a><a href="#services">Services</a><a href="#process">Process</a><a href="#contact">Contact</a>
+      <button id="theme" type="button">Light / Dark</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1>Payment testing with real cards, banks and countries.</h1>
+        <p class="lede">I’m Thura, a freelance software tester and IT administrator in Frankfurt. I’m an experienced payment tester, currently working for large tech companies.</p>
+        <div class="btns"><a class="btn primary" href="#payments">See my payment methods</a><a class="btn" href="#contact">Get in touch</a></div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="pc" style="--i:0;--l:2%;--t:4%;--r:-7deg;--k:.5;background:#B10202;color:#fff"><span>Mastercard Credit</span><i class="chip"></i><small>•••• •••• •••• ••••</small></div>
+        <div class="pc" style="--i:1;--l:22%;--t:20%;--r:4deg;--k:1;background:#0B53A8;color:#fff"><span>Visa Credit</span><i class="chip"></i><small>•••• •••• •••• ••••</small></div>
+        <div class="pc" style="--i:2;--l:6%;--t:46%;--r:-3deg;--k:1.5;background:#FFE5A0;color:#1B1B2F"><span>Bank Account</span><i class="chip"></i><small>DE•• •••• •••• ••••</small></div>
+        <div class="pc" style="--i:3;--l:30%;--t:62%;--r:6deg;--k:2;background:#9CCBEF;color:#10243F"><span>Visa Debit</span><i class="chip"></i><small>•••• •••• •••• ••••</small></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="mq" aria-hidden="true"><div class="mq-t">
+  <div style="display:flex"><span>Payment testing</span><span>Manual testing</span><span>Test automation</span><span>IT administration</span><span>Bug reports</span><span>Test planning</span></div>
+  <div style="display:flex"><span>Payment testing</span><span>Manual testing</span><span>Test automation</span><span>IT administration</span><span>Bug reports</span><span>Test planning</span></div>
+</div></div>
+
+<div class="wrap">
+  <section id="payments">
+    <h2 class="s">I own the payment methods I test with</h2>
+    <p class="intro">A large pool of cards and bank accounts from many banks and countries, so I can reproduce payment problems the way real customers meet them.</p>
+    <div class="stats" id="stats"></div>
+    <div class="lg"><span><i></i>Issued in Germany</span><span><i class="o"></i>Other country</span></div>
+    <div class="pm" id="pm"></div>
+    <p class="src" id="src"></p>
+  </section>
+
+  <section id="services">
+    <h2 class="s">What I can do for your team</h2>
+    <p class="intro">I work alongside developers and product owners, on a single release or as a regular part of your sprints.</p>
+    <div class="cards">
+      <div class="sv"><h3>Payment testing</h3><p>Checkout flows, declines, refunds and timeouts, tested with real cards and bank accounts from many issuers.</p></div>
+      <div class="sv"><h3>Manual and automated testing</h3><p>Exploratory testing that catches what scripts miss, plus repeatable checks for the flows that must never break.</p></div>
+      <div class="sv"><h3>IT administration</h3><p>Setting up and troubleshooting test environments, accounts and access, so testing is never blocked by infrastructure.</p></div>
+      <div class="sv"><h3>Planning and bug reports</h3><p>A clear plan of what to test first, and reproducible bug reports with evidence attached.</p></div>
+    </div>
+  </section>
+
+  <section id="about" class="split">
+    <h2 class="s">Why my IT background helps</h2>
+    <p>I’m an IT administrator as well as a tester, so I know how systems, networks and access work. When a test fails, I can often tell whether it’s a bug in the software, a configuration issue or an environment problem. That saves your developers time.</p>
+  </section>
+
+  <section id="process">
+    <h2 class="s">How a testing project runs</h2>
+    <p class="intro">The same four steps every time, so you always know where things stand.</p>
+    <ol class="steps">
+      <li><b>Understand</b><span>We agree on what the software should do and what matters most.</span></li>
+      <li><b>Test</b><span>I work through the plan and explore beyond it.</span></li>
+      <li><b>Report</b><span>You get findings ranked by severity, each one reproducible.</span></li>
+      <li><b>Retest</b><span>I verify the fixes before the release goes out.</span></li>
+    </ol>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Have a release coming up? Let’s test it.</h2>
+    <div class="btns"><a class="btn primary" href="mailto:your-email@example.de"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email me</a><a class="btn" href="https://www.linkedin.com/in/tunthura/" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11.5H3zM9.5 9.75h3.8v1.6h.05c.55-1 1.9-1.95 3.85-1.95 4.05 0 4.8 2.65 4.8 6.1v5.75h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.35-2 2.7v5.2h-4z"/></svg>LinkedIn</a><a class="btn" href="https://www.instagram.com/thura.trt/" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a><a class="btn" href="https://www.facebook.com/trt999" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-8h2.7l.5-3.2h-3.2V7.9c0-.9.4-1.6 1.7-1.6h1.6V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.3V13h2.6v8z"/></svg>Facebook</a></div>
+  </section>
+
+  <footer>
+    <div>© 2026 Thura Tun, Frankfurt. All rights reserved.</div>
+    <div class="links"><a href="#impressum">Impressum</a><a href="#datenschutz">Datenschutz</a></div>
+    <div class="legal" id="impressum">
+      <h2>Impressum</h2>
+      <p><a href="#top">Close</a></p>
+      <p>Angaben gemäß § 5 DDG</p>
+      <p>Thura Tun<br>[Straße und Hausnummer]<br>[PLZ] Frankfurt am Main</p>
+      <h3>Kontakt</h3>
+      <p>E-Mail: [your email]<br>Telefon: [optional]</p>
+      <h3>Umsatzsteuer</h3>
+      <p>[USt-IdNr. oder Hinweis auf Kleinunternehmerregelung, falls zutreffend]</p>
+    </div>
+    <div class="legal" id="datenschutz">
+      <h2>Datenschutz</h2>
+      <p><a href="#top">Close</a></p>
+      <p>[Add your privacy policy here. A privacy policy generator can create a text that fits your setup, including the fonts and any Google services you use.]</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function(){
+  /* To link your Google Sheet: File > Share > Publish to web > choose the tab with ONLY the summary
+     (columns: Payment type, DE, Other Country, Total) > CSV > Publish, then paste the link between the quotes. */
+  var SHEET_CSV_URL="";
+  var FALLBACK=[["Amex Credit",1,0],["Bank Account",57,3],["Mastercard Credit",2,26],["Mastercard Debit",31,10],["Visa Credit",4,0],["Visa Debit",14,203]];
+  var COLORS=[[/amex/i,"#D4EDBC"],[/bank/i,"#FFE5A0"],[/mastercard.*credit/i,"#B10202"],[/mastercard/i,"#FFB4AB"],[/visa.*credit/i,"#0B53A8"],[/visa/i,"#9CCBEF"]];
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+  function col(n){for(var i=0;i<COLORS.length;i++)if(COLORS[i][0].test(n))return COLORS[i][1];return"#9A86FF"}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+  function num(v){return parseInt(String(v||"").replace(/[^0-9]/g,""),10)||0}
+
+  /* headline word animation */
+  var h=$('.hero h1')[0];h.setAttribute('aria-label',h.textContent);
+  h.innerHTML=h.textContent.trim().split(/\s+/).map(function(w,i){return'<span class="w" aria-hidden="true"><span style="--i:'+i+'">'+esc(w)+'</span></span>'}).join(' ');
+
+  /* theme toggle */
+  var root=document.documentElement;
+  document.getElementById('theme').onclick=function(){
+    var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme=dark?'light':'dark';
+  };
+
+  /* reveal on scroll */
+  function count(el){
+    var to=+el.dataset.to,s=null;
+    if(rm){el.textContent=to;return}
+    (function f(t){s=s||t;var p=Math.min(1,(t-s)/1200);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(performance.now());
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;var el=e.target;io.unobserve(el);el.classList.add('in');
+    if(el.classList.contains('cnt'))count(el);
+  })},{threshold:.15});
+  function watch(list,addRv){list.forEach(function(el,i){
+    if(addRv&&!rm){el.classList.add('rv');el.style.transitionDelay=(i%5)*0.08+'s'}
+    if(rm){el.classList.add('in');if(el.classList.contains('cnt'))count(el)}else io.observe(el);
+  })}
+  watch($('section h2.s, .intro, .sv, .split p, .steps li, .contact h2, .contact .btns'),true);
+
+  /* payment overview */
+  function render(d){
+    var D=0,O=0,max=1;d.forEach(function(r){D+=r[1];O+=r[2];max=Math.max(max,r[1]+r[2])});
+    $('#stats')[0].innerHTML=[[D+O,"payment methods in total"],[D,"issued in Germany"],[O,"from other countries"],[d.length,"different types"]]
+      .map(function(s){return'<div class="stat"><b class="cnt" data-to="'+s[0]+'">0</b><span>'+s[1]+'</span></div>'}).join('');
+    $('#pm')[0].innerHTML=d.map(function(r,i){
+      return'<div class="row" style="--c:'+col(r[0])+';--d:'+(i*0.1)+'s"><span class="nm">'+esc(r[0])+'<small>'+r[1]+' DE, '+r[2]+' other</small></span><div class="bar"><i class="seg" style="--w:'+(r[1]/max*100)+'%"></i><i class="seg ot" style="--w:'+(r[2]/max*100)+'%"></i></div><b class="cnt" data-to="'+(r[1]+r[2])+'">0</b></div>';
+    }).join('');
+    watch($('.row, .cnt'),false);
+  }
+  function parseCSV(t){
+    var rows=[],r=[],c="",q=false;
+    for(var i=0;i<t.length;i++){var ch=t[i];
+      if(q){if(ch=='"'){if(t[i+1]=='"'){c+='"';i++}else q=false}else c+=ch}
+      else if(ch=='"')q=true;
+      else if(ch==','){r.push(c);c=""}
+      else if(ch=='\n'||ch=='\r'){if(ch=='\r'&&t[i+1]=='\n')i++;r.push(c);rows.push(r);r=[];c=""}
+      else c+=ch}
+    if(c!==""||r.length){r.push(c);rows.push(r)}
+    return rows;
+  }
+  if(!SHEET_CSV_URL){render(FALLBACK)}
+  else fetch(SHEET_CSV_URL).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
+    var d=parseCSV(t).slice(1).map(function(r){return[(r[0]||"").trim(),num(r[1]),num(r[2])]})
+      .filter(function(r){return r[0]&&!/^total/i.test(r[0])&&r[1]+r[2]>0});
+    if(!d.length)throw 0;render(d);document.getElementById('src').textContent="Live from my Google Sheet";
+  }).catch(function(){render(FALLBACK)});
+
+  /* card tilt and scroll progress */
+  var st=$('.stage')[0],bar=document.getElementById('bar'),t=false;
+  if(!rm){
+    addEventListener('pointermove',function(e){
+      st.style.setProperty('--tx',((e.clientX/innerWidth-.5)*2*18)+'px');
+      st.style.setProperty('--ty',((e.clientY/innerHeight-.5)*2*14)+'px');
+    },{passive:true});
+    addEventListener('scroll',function(){
+      if(t)return;t=true;
+      requestAnimationFrame(function(){
+        var m=document.documentElement.scrollHeight-innerHeight;
+        bar.style.transform='scaleX('+(m>0?Math.min(1,scrollY/m):0)+')';t=false;
+      });
+    },{passive:true});
+  }
+})();
+</script>
+</body>
+</html>
