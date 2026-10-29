@@ -1,0 +1,11 @@
+{
+  "updated": "2026-10-29T12:00:00Z",
+  "rows": [
+    ["Amex Credit", 1, 0],
+    ["Bank Account", 57, 3],
+    ["Mastercard Credit", 2, 26],
+    ["Mastercard Debit", 31, 10],
+    ["Visa Credit", 4, 0],
+    ["Visa Debit", 14, 203]
+  ]
+}
