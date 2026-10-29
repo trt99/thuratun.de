@@ -1,6 +1,8 @@
 # Copies the payment method counts from the published Google Sheet tab (PI_web)
 # into counts.json every 3 hours. The website reads counts.json from GitHub,
 # so visitors' browsers never contact Google.
+# When the numbers changed, this workflow also publishes the site to GitHub Pages,
+# because commits made by a workflow do not start the normal Pages deployment.
 name: Update payment method counts
 
 on:
@@ -11,10 +13,13 @@ on:
 permissions:
   contents: write
   pages: write
+  id-token: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - uses: actions/checkout@v5
 
@@ -66,10 +71,29 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # Commits made by this job do not start the normal GitHub Pages build,
-      # so ask GitHub Pages to rebuild the site.
-      - name: Rebuild GitHub Pages
-        if: steps.commit.outputs.changed == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"
+  deploy:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Set up Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
