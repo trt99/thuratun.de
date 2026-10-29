@@ -1,0 +1,64 @@
+# Copies the payment method counts from the published Google Sheet tab (PI_web)
+# into counts.json every 3 hours. The website reads counts.json from GitHub,
+# so visitors' browsers never contact Google.
+name: Update payment method counts
+
+on:
+  schedule:
+    - cron: "23 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download sheet and build counts.json
+        env:
+          SHEET_CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVYTUsxq-cAAFAapxpAZU8_kNgnLfUmBUIpnLyUuEUd1HsezBntH3r9PLFDoPye5cM-7g6k4y6kKCU/pub?gid=1658616993&single=true&output=csv"
+        run: |
+          python3 - <<'PY'
+          import csv, io, json, os, re, sys, urllib.request
+          from datetime import datetime, timezone
+
+          raw = urllib.request.urlopen(os.environ["SHEET_CSV_URL"], timeout=30).read().decode("utf-8")
+          rows = []
+          for r in list(csv.reader(io.StringIO(raw)))[1:]:
+              name = (r[0] if r else "").strip()
+              if not name or re.search("total", name, re.I):
+                  continue
+              num = lambda v: int(re.sub(r"[^0-9]", "", v or "") or 0)
+              de, other = num(r[1] if len(r) > 1 else ""), num(r[2] if len(r) > 2 else "")
+              if de + other > 0:
+                  rows.append([name, de, other])
+          if not rows:
+              sys.exit("No rows found in the sheet, keeping the old counts.json")
+
+          old = {}
+          if os.path.exists("counts.json"):
+              with open("counts.json", encoding="utf-8") as f:
+                  old = json.load(f)
+          if old.get("rows") == rows:
+              print("Counts unchanged")
+              sys.exit(0)
+
+          data = {"updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "rows": rows}
+          with open("counts.json", "w", encoding="utf-8") as f:
+              json.dump(data, f, ensure_ascii=False, indent=2)
+              f.write("\n")
+          print("Counts updated:", rows)
+          PY
+
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain counts.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add counts.json
+            git commit -m "Update payment method counts"
+            git push
+          fi
