@@ -1,15 +1,15 @@
 {
-  "updated": "2026-10-29T14:29:03Z",
+  "updated": "2026-10-29T14:50:05Z",
   "rows": [
     [
       "Amex Credit",
-      5,
+      2000,
       0
     ],
     [
       "Bank Account",
       57,
-      102
+      1002
     ],
     [
       "Mastercard Credit",
