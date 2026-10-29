@@ -288,9 +288,9 @@ h1 .hl{color:var(--acc)}
 .fm-h{font:800 1.45rem var(--display);position:relative}
 .fm-s{opacity:.8;font-size:.95rem;position:relative}
 .fm-l{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem;position:relative}
-.fm-l span{padding:.35rem .85rem;border-radius:99px;background:color-mix(in srgb,var(--bg) 12%,transparent);border:1.5px solid color-mix(in srgb,var(--bg) 25%,transparent);font-weight:600;font-size:.92rem;transform:rotate(var(--r,0deg));transition:transform .2s,background .2s}
+.fm-l span{padding:.35rem .85rem;border-radius:99px;background:color-mix(in srgb,var(--bg) 12%,transparent);border:1.5px solid color-mix(in srgb,var(--bg) 25%,transparent);font-weight:600;font-size:.92rem;transition:transform .2s,background .2s}
 .fm-l span{cursor:default}
-.fm-l span:hover{transform:rotate(0) scale(1.12);background:var(--hb,var(--acc));border-color:var(--hd,var(--acc));color:var(--hf,var(--acc-ink))}
+.fm-l span:hover{transform:translateY(-2px) scale(1.06);background:var(--hb,var(--acc));border-color:var(--hd,var(--acc));color:var(--hf,var(--acc-ink))}
 .fm-l .fm-x{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
 @media (max-width:52rem){.pc small.gen{font-size:.72rem}.fc-more{grid-column:auto;min-height:100%}}
 .src{display:flex;align-items:center;gap:.5rem}
@@ -615,7 +615,7 @@ h1 .hl{color:var(--acc)}
         +'<span class="fc-b"><i class="stripe"></i><span class="fsplit"><i style="width:'+dp+'%"></i></span><span class="frow"><span>'+flag+T('deLbl')+'</span><b>'+r[1]+'</b></span><span class="frow"><span>'+globe+T('otLbl')+'</span><b>'+r[2]+'</b></span></span></span></button>';
     }).join('');
     var OTH=[['Klarna','#FFB3C7','#17120F','#FFB3C7'],['Wero','#FFE600','#111','#FFE600'],['PayPal','#0070E0','#fff','#003087'],['Google Pay','#fff','#3C4043','#4285F4'],['Apple Pay','#000','#fff','#fff'],['SEPA','#10298E','#FFCC00','#FFCC00'],['Trustly','#0EE06E','#0B1B12','#0EE06E'],[T('crypto'),'#F7931A','#1B1B1B','#F7931A']];
-    $('#pm')[0].insertAdjacentHTML('beforeend','<div class="fc-more"><span class="fm-h">'+T('moreH')+'</span><span class="fm-s">'+T('moreS')+'</span><span class="fm-l">'+OTH.map(function(o,i){return'<span style="--r:'+((i%3-1)*3)+'deg;--hb:'+o[1]+';--hf:'+o[2]+';--hd:'+o[3]+'">'+o[0]+'</span>'}).join('')+'<span class="fm-x">'+T('moreX')+'</span></span></div>');
+    $('#pm')[0].insertAdjacentHTML('beforeend','<div class="fc-more"><span class="fm-h">'+T('moreH')+'</span><span class="fm-s">'+T('moreS')+'</span><span class="fm-l">'+OTH.map(function(o,i){return'<span style="--hb:'+o[1]+';--hf:'+o[2]+';--hd:'+o[3]+'">'+o[0]+'</span>'}).join('')+'<span class="fm-x">'+T('moreX')+'</span></span></div>');
     $('#pm .fc').forEach(function(b){b.addEventListener('click',function(){b.classList.toggle('flip')})});
     var dt=new Date(UPDATED),ds='';
     try{ds=dt.toLocaleString(LANG==='de'?'de-DE':'en-GB',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Europe/Berlin'})}catch(e){ds=dt.toISOString().slice(0,10)}
@@ -637,7 +637,7 @@ h1 .hl{color:var(--acc)}
   DATA=FALLBACK;
   /* Counts come from counts.json in the same repo. A GitHub Action copies them from the
      Google Sheet every 3 hours, so visitors' browsers never contact Google. */
-  fetch('counts.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+  fetch('counts.json?v='+Date.now(),{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
     var d=(j.rows||[]).map(function(r){return[String(r[0]),num(r[1]),num(r[2])]}).filter(function(r){return r[0]&&r[1]+r[2]>0});
     if(!d.length)throw 0;DATA=d;if(j.updated)UPDATED=j.updated;render();
   }).catch(function(){});
