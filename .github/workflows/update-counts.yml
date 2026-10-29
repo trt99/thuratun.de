@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 jobs:
   update:
@@ -54,6 +55,7 @@ jobs:
           PY
 
       - name: Commit if changed
+        id: commit
         run: |
           if [ -n "$(git status --porcelain counts.json)" ]; then
             git config user.name "github-actions[bot]"
@@ -61,4 +63,13 @@ jobs:
             git add counts.json
             git commit -m "Update payment method counts"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      # Commits made by this job do not start the normal GitHub Pages build,
+      # so ask GitHub Pages to rebuild the site.
+      - name: Rebuild GitHub Pages
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"
