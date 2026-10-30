@@ -1,0 +1,165 @@
+{
+ "updated": "2026-10-30T09:00:00Z",
+ "rows": [
+  [
+   "Main Workstation",
+   "Windows 11",
+   "Desktop"
+  ],
+  [
+   "Dell Latitude 7420",
+   "Windows 11",
+   "Laptop"
+  ],
+  [
+   "Dell Latitude 7400",
+   "Windows 10",
+   "Laptop"
+  ],
+  [
+   "Dell Latitude 7490",
+   "Ubuntu 22.04.4",
+   "Laptop"
+  ],
+  [
+   "Acer Aspire E5-471G",
+   "Windows 7",
+   "Laptop"
+  ],
+  [
+   "MacBook Pro 13\", 2019",
+   "macOS Sequoia 15.7.3",
+   "Laptop"
+  ],
+  [
+   "OnePlus 13",
+   "Android 16",
+   "Mobile"
+  ],
+  [
+   "Samsung A52s",
+   "Android 14",
+   "Mobile"
+  ],
+  [
+   "Samsung A42",
+   "Android 12",
+   "Mobile"
+  ],
+  [
+   "Samsung A42",
+   "Android 12",
+   "Mobile"
+  ],
+  [
+   "Samsung A41",
+   "Android 12",
+   "Mobile"
+  ],
+  [
+   "Samsung A40",
+   "Android 11",
+   "Mobile"
+  ],
+  [
+   "Xiaomi Mi A2",
+   "Android 10",
+   "Mobile"
+  ],
+  [
+   "Samsung A5",
+   "Android 8",
+   "Mobile"
+  ],
+  [
+   "Samsung A3",
+   "Android 7",
+   "Mobile"
+  ],
+  [
+   "Huawei nova 11i",
+   "Android 12",
+   "Mobile"
+  ],
+  [
+   "Samsung Tab A7",
+   "Android 12",
+   "Tablet"
+  ],
+  [
+   "iPhone 17 Pro Max",
+   "iOS 27.2",
+   "Mobile"
+  ],
+  [
+   "iPhone 14 Pro Max",
+   "iOS 26",
+   "Mobile"
+  ],
+  [
+   "iPhone 7",
+   "iOS 14.4.2",
+   "Mobile"
+  ],
+  [
+   "iPhone 5s",
+   "iOS 12.5.7",
+   "Mobile"
+  ],
+  [
+   "iPad Air 2",
+   "iPadOS 15.5",
+   "Tablet"
+  ],
+  [
+   "Apple Watch Series 8",
+   "watchOS 26.6",
+   "Smartwatches"
+  ],
+  [
+   "Amazon Fire TV Stick 4K",
+   "N/A",
+   "Streaming Devices"
+  ],
+  [
+   "Roku Streaming Stick 4K",
+   "N/A",
+   "Streaming Devices"
+  ],
+  [
+   "Apple TV 4K 2022",
+   "tvOS 18.4",
+   "Streaming Devices"
+  ],
+  [
+   "Xiaomi TV Stick 4K",
+   "Android 11",
+   "Streaming Devices"
+  ],
+  [
+   "PlayStation 5",
+   "N/A",
+   "Gaming Consoles"
+  ],
+  [
+   "PlayStation 4",
+   "N/A",
+   "Gaming Consoles"
+  ],
+  [
+   "Amazon Echo Dot (3rd Gen)",
+   "N/A",
+   "Smart Home Devices"
+  ],
+  [
+   "Philips 50PUS8105/12",
+   "N/A",
+   "Smart TV"
+  ],
+  [
+   "AirPods Pro 2",
+   "N/A",
+   "Wearables"
+  ]
+ ]
+}
