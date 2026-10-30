@@ -7,6 +7,11 @@
    "Desktop"
   ],
   [
+   "Lenovo ThinkPad P16v Gen 2",
+   "Windows 11",
+   "Laptop"
+  ],
+  [
    "Dell Latitude 7420",
    "Windows 11",
    "Laptop"
@@ -107,6 +112,11 @@
    "Smartwatches"
   ],
   [
+   "OnePlus Watch 2R",
+   "Google Wear OS 4",
+   "Smartwatches"
+  ],
+  [
    "Amazon Fire TV Stick 4K",
    "N/A",
    "Streaming Devices"
@@ -135,6 +145,11 @@
    "PlayStation 4",
    "N/A",
    "Gaming Consoles"
+  ],
+  [
+   "HomePod mini 2",
+   "N/A",
+   "Smart Home Devices"
   ],
   [
    "Amazon Echo Dot (3rd Gen)",
