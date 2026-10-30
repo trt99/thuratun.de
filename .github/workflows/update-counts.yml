@@ -6,7 +6,7 @@
 # When something changed, this workflow also publishes the site to GitHub Pages,
 # because commits made by a workflow do not start the normal Pages deployment.
 # Starting it by hand (Run workflow) always publishes the site.
-name: Update payment method counts
+name: Update site data from Google Sheet
 
 on:
   schedule:
