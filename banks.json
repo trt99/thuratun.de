@@ -1,53 +1,56 @@
 {
- "updated": "2026-10-30T09:00:00Z",
- "rows": [
-  [
-   "BB Bank"
-  ],
-  [
-   "bunq"
-  ],
-  [
-   "C24"
-  ],
-  [
-   "Deutsche Bank"
-  ],
-  [
-   "DKB"
-  ],
-  [
-   "Frankfurter Sparkasse"
-  ],
-  [
-   "Frankfurter Volksbank"
-  ],
-  [
-   "HypoVereinsbank"
-  ],
-  [
-   "ING"
-  ],
-  [
-   "Klarna Bank"
-  ],
-  [
-   "Openbank"
-  ],
-  [
-   "Revolut DE"
-  ],
-  [
-   "Sparda-Bank Hessen"
-  ],
-  [
-   "BBVA"
-  ],
-  [
-   "Trade Republic"
-  ],
-  [
-   "Vivid"
+  "updated": "2026-10-30T19:34:39Z",
+  "rows": [
+    [
+      "BB Bank"
+    ],
+    [
+      "BBVA"
+    ],
+    [
+      "bunq"
+    ],
+    [
+      "C24"
+    ],
+    [
+      "Deutsche Bank"
+    ],
+    [
+      "DKB"
+    ],
+    [
+      "Frankfurter Sparkasse"
+    ],
+    [
+      "Frankfurter Volksbank"
+    ],
+    [
+      "HypoVereinsbank"
+    ],
+    [
+      "ING"
+    ],
+    [
+      "Klarna Bank"
+    ],
+    [
+      "Openbank"
+    ],
+    [
+      "Revolut DE"
+    ],
+    [
+      "Sparda-Bank Hessen"
+    ],
+    [
+      "Test Bank TRT"
+    ],
+    [
+      "Trade Republic"
+    ],
+    [
+      "Vivid"
+    ]
   ]
- ]
 }
