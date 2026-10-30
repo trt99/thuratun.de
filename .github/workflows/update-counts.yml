@@ -1,13 +1,16 @@
-# Copies the payment method counts from the published Google Sheet tab (PI_web)
-# into counts.json every 3 hours. The website reads counts.json from GitHub,
-# so visitors' browsers never contact Google.
-# When the numbers changed, this workflow also publishes the site to GitHub Pages,
+# Copies data from the published Google Sheet tab (thuratun.de) every 6 hours:
+#   columns A to C   payment method counts  -> counts.json
+#   "DE Bank List"   German banks            -> banks.json
+#   "Device" / OS / Category (3 columns)     -> devices.json
+# The website reads these files from GitHub, so visitors' browsers never contact Google.
+# When something changed, this workflow also publishes the site to GitHub Pages,
 # because commits made by a workflow do not start the normal Pages deployment.
+# Starting it by hand (Run workflow) always publishes the site.
 name: Update payment method counts
 
 on:
   schedule:
-    - cron: "23 */3 * * *"
+    - cron: "23 */6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -23,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Download sheet and build counts.json
+      - name: Download sheet and build the JSON files
         env:
           SHEET_CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVYTUsxq-cAAFAapxpAZU8_kNgnLfUmBUIpnLyUuEUd1HsezBntH3r9PLFDoPye5cM-7g6k4y6kKCU/pub?gid=1658616993&single=true&output=csv"
         run: |
@@ -32,48 +35,79 @@ jobs:
           from datetime import datetime, timezone
 
           raw = urllib.request.urlopen(os.environ["SHEET_CSV_URL"], timeout=30).read().decode("utf-8")
-          rows = []
-          for r in list(csv.reader(io.StringIO(raw)))[1:]:
-              name = (r[0] if r else "").strip()
+          table = list(csv.reader(io.StringIO(raw)))
+          if not table:
+              sys.exit("The sheet is empty, keeping the old files")
+          head = [h.strip().lower() for h in table[0]]
+          body = table[1:]
+          cell = lambda r, i: (r[i] if i is not None and i < len(r) else "").strip()
+          now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+          def save(path, rows, label):
+              if not rows:
+                  print(label + ": nothing found in the sheet, keeping the old file")
+                  return
+              old = {}
+              if os.path.exists(path):
+                  with open(path, encoding="utf-8") as f:
+                      old = json.load(f)
+              if old.get("rows") == rows:
+                  print(label + ": unchanged")
+                  return
+              with open(path, "w", encoding="utf-8") as f:
+                  json.dump({"updated": now, "rows": rows}, f, ensure_ascii=False, indent=2)
+                  f.write("\n")
+              print(label + ": updated (" + str(len(rows)) + " rows)")
+
+          # Payment method counts: name in A, Germany in B, other countries in C
+          num = lambda v: int(re.sub(r"[^0-9]", "", v or "") or 0)
+          counts = []
+          for r in body:
+              name = cell(r, 0)
               if not name or re.search("total", name, re.I):
                   continue
-              num = lambda v: int(re.sub(r"[^0-9]", "", v or "") or 0)
-              de, other = num(r[1] if len(r) > 1 else ""), num(r[2] if len(r) > 2 else "")
+              de, other = num(cell(r, 1)), num(cell(r, 2))
               if de + other > 0:
-                  rows.append([name, de, other])
-          if not rows:
-              sys.exit("No rows found in the sheet, keeping the old counts.json")
+                  counts.append([name, de, other])
+          save("counts.json", counts, "Counts")
 
-          old = {}
-          if os.path.exists("counts.json"):
-              with open("counts.json", encoding="utf-8") as f:
-                  old = json.load(f)
-          if old.get("rows") == rows:
-              print("Counts unchanged")
-              sys.exit(0)
+          # German banks: the column whose header contains "bank"
+          bcol = next((i for i, h in enumerate(head) if "bank" in h), None)
+          banks = []
+          if bcol is not None:
+              for r in body:
+                  name = cell(r, bcol)
+                  if name and [name] not in banks:
+                      banks.append([name])
+          save("banks.json", banks, "Banks")
 
-          data = {"updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "rows": rows}
-          with open("counts.json", "w", encoding="utf-8") as f:
-              json.dump(data, f, ensure_ascii=False, indent=2)
-              f.write("\n")
-          print("Counts updated:", rows)
+          # Devices: the column with the header "Device", then OS and Category next to it
+          dcol = next((i for i, h in enumerate(head) if h.startswith("device")), None)
+          devices = []
+          if dcol is not None:
+              for r in body:
+                  name = cell(r, dcol)
+                  if name:
+                      devices.append([name, cell(r, dcol + 1) or "N/A", cell(r, dcol + 2)])
+          save("devices.json", devices, "Devices")
           PY
 
       - name: Commit if changed
         id: commit
         run: |
-          if [ -n "$(git status --porcelain counts.json)" ]; then
+          if [ -n "$(git status --porcelain counts.json banks.json devices.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add counts.json
-            git commit -m "Update payment method counts"
+            git add counts.json banks.json devices.json
+            git commit -m "Update data from Google Sheet"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
   deploy:
     needs: update
-    if: needs.update.outputs.changed == 'true'
+    # Runs when the data changed, or always when started by hand (Run workflow)
+    if: needs.update.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     concurrency:
       group: pages
