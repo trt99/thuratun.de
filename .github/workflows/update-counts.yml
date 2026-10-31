@@ -28,7 +28,7 @@ jobs:
 
       - name: Download sheet and build the JSON files
         env:
-          SHEET_CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVYTUsxq-cAAFAapxpAZU8_kNgnLfUmBUIpnLyUuEUd1HsezBntH3r9PLFDoPye5cM-7g6k4y6kKCU/pub?gid=1658616993&single=true&output=csv"
+          SHEET_CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vROK5V4oa8BAABU44F5_RiIYJw1NUhfKmXLlge3Z46A1hvHhNDcdlIuDHxCr0ACFoBnUT7TedFilS59/pub?gid=901393017&single=true&output=csv"
         run: |
           python3 - <<'PY'
           import csv, io, json, os, re, sys, urllib.request
