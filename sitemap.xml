@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://thuratun.de/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://thuratun.de/devices.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://thuratun.de/it-admin.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://thuratun.de/play.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://thuratun.de/de/</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://thuratun.de/de/devices.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://thuratun.de/de/it-admin.html</loc><lastmod>2026-10-30</lastmod></url>
-  <url><loc>https://thuratun.de/de/play.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://thuratun.de/</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://thuratun.de/devices</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://thuratun.de/it-admin</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://thuratun.de/play</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://thuratun.de/de/</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://thuratun.de/de/devices</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://thuratun.de/de/it-admin</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://thuratun.de/de/play</loc><lastmod>2026-10-31</lastmod></url>
 </urlset>
