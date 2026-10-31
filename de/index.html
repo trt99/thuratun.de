@@ -16,12 +16,12 @@
 <meta content="https://thuratun.de/de/" property="og:url"/>
 <meta content="Thura Tun | Payment-Tester in Deutschland (Frankfurt)" property="og:title"/>
 <meta content="Freiberuflicher Payment-Tester in Frankfurt. Tests für Online-Zahlungen, Open Banking, BNPL und Zahlungen im Geschäft, mit über 350 eigenen Karten und Konten und über 30 Geräten." property="og:description"/>
-<meta content="https://thuratun.de/og-image.png?v=8" property="og:image"/>
+<meta content="https://thuratun.de/og-image.png?v=9" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="Thura Tun, payment tester in Frankfurt" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="https://thuratun.de/og-image.png?v=8" name="twitter:image"/>
+<meta content="https://thuratun.de/og-image.png?v=9" name="twitter:image"/>
 <meta content="de_DE" property="og:locale"/>
 <meta content="en_GB" property="og:locale:alternate"/>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Thura Tun, Payment Tester", "description": "Freelance payment tester in Frankfurt, Germany. Online, open banking, BNPL and in-store payment testing with 350+ own cards and bank accounts and 30+ devices.", "url": "https://thuratun.de/", "address": {"@type": "PostalAddress", "addressLocality": "Frankfurt am Main", "addressRegion": "Hessen", "addressCountry": "DE"}, "areaServed": {"@type": "Country", "name": "Germany"}, "serviceType": ["Payment testing", "Open banking testing", "In-store payment testing", "Mobile app testing", "Web testing"], "founder": {"@type": "Person", "name": "Thura Tun", "jobTitle": "Payment Tester", "url": "https://thuratun.de/", "sameAs": ["https://www.linkedin.com/in/tunthura/"], "knowsLanguage": ["de", "en", "my"], "hasCredential": [{"@type": "EducationalOccupationalCredential", "name": "ITIL 4 Foundation"}, {"@type": "EducationalOccupationalCredential", "name": "Microsoft Certified: Azure Fundamentals (AZ-900)", "url": "https://www.credly.com/badges/9dc0fa04-e932-4269-af0b-c82157c03073"}]}}</script>
@@ -68,10 +68,10 @@ h3{font:700 1.08rem/1.35 var(--sans)}
 p{margin:0 0 1rem}
 .lead{font-size:1.18rem;color:var(--muted);max-width:38rem}
 .kick{font:500 .8rem/1.4 var(--mono);color:var(--muted);letter-spacing:.02em;margin:0 0 1.1rem}
-.mark{background:linear-gradient(transparent 58%,var(--hi) 58%,var(--hi) 90%,transparent 90%) no-repeat 0 0/0% 100%;transition:background-size .9s cubic-bezier(.7,0,.2,1) .35s;padding:0 .08em;margin:0 -.08em}
-.mark.on{background-size:100% 100%}
-:root[data-theme="dark"] .mark{background-image:linear-gradient(transparent 80%,var(--hi) 80%,var(--hi) 94%,transparent 94%)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mark{background-image:linear-gradient(transparent 80%,var(--hi) 80%,var(--hi) 94%,transparent 94%)}}
+/* highlight: magnetic stripe, swiped in from the left like a card */
+.mark{background:linear-gradient(var(--ink),var(--ink)) no-repeat 0 0/0% 100%;padding:0 .14em;margin:0 .02em;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size .7s cubic-bezier(.7,0,.2,1) .3s,color .2s linear .62s}
+.mark.on,html:not(.js) .mark{background-size:100% 100%;color:var(--bg)}
+.mark.done{transition:none}
 
 /* header */
 .hd{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
@@ -172,10 +172,10 @@ p{margin:0 0 1rem}
 @media (max-width:40rem){.ct .btns{flex-wrap:nowrap;gap:.45rem}.ct .btn{flex:1 1 auto;justify-content:center;padding:.72rem .6rem;font-size:.9rem;gap:.4rem}}
 
 /* footer */
-.ft{border-top:1.5px solid var(--ink);padding:1.8rem 0 2.4rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.2rem;font-size:.88rem;color:var(--muted)}
-.ft-l{display:flex;align-items:flex-end;gap:1.1rem}
+.ft{border-top:1.5px solid var(--ink);padding:1.8rem 0 2.4rem;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.2rem;font-size:.88rem;color:var(--muted)}
+.ft-l{display:flex;align-items:center;gap:1rem;margin-left:auto}
 .ft-l .mk{color:var(--ink)}
-.ft nav{display:flex;flex-wrap:wrap;gap:1.2rem}
+.ft nav{display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem}
 .ft a{text-decoration:none}
 .ft a:hover{text-decoration:underline;text-decoration-color:var(--hi);text-decoration-thickness:3px}
 
@@ -188,7 +188,9 @@ p{margin:0 0 1rem}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;transition-delay:0s!important}}
 @media print{.hd,.tl,.ft nav{display:none}}
-/* hero */
+
+.ver{font:500 .72rem/1 var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:.22rem .42rem}
+@media (max-width:40rem){.ft-l{margin-left:0}}/* hero */
 .hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.8fr);gap:4rem;align-items:center;padding:4.5rem 0 5rem}
 .hero h1{margin-bottom:1.5rem;max-width:44rem}
 .hero .lead{margin-bottom:2rem}
@@ -236,9 +238,10 @@ p{margin:0 0 1rem}
 .ea{border-left:3px solid var(--ok);padding:.05rem 0 .05rem .85rem;margin-bottom:1rem}
 .ea.bad{border-left-color:var(--bad)}
 .ea p{margin:0}
-.why{grid-column:1/-1;font:600 1.05rem/1.5 var(--sans);border-top:1px dashed var(--line);padding-top:1rem;margin:0}
+.why{grid-column:1/-1;font:400 1rem/1.55 var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:0 4px 4px 0;padding:.85rem 1.1rem .95rem;margin:.3rem 0 0}
 :root[lang="my"] .why{font-family:var(--sans)}
-.why span{font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:.3rem}
+.why span{font:600 .72rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--acc);display:flex;align-items:center;gap:.4rem;margin-bottom:.3rem}
+.why span:before{content:"!";display:inline-grid;place-items:center;width:1.15rem;height:1.15rem;border-radius:50%;background:var(--acc);color:var(--paper);font:700 .7rem var(--sans);letter-spacing:0}
 @media (max-width:52rem){
   .bug-q{grid-template-columns:minmax(0,1fr) 1rem;gap:.4rem .8rem}
   .bug .tag{grid-column:1;grid-row:1;justify-self:start}.bug-i{grid-column:2;grid-row:1/3;align-self:center}
@@ -301,6 +304,35 @@ p{margin:0 0 1rem}
 @keyframes hot{0%,70%{opacity:1}80%{opacity:.35}90%{opacity:1}}
 
 .wk{grid-template-columns:1fr 1fr}
+
+/* the gap: test environment vs real checkout */
+.gap{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0 0 1.1rem;border:1.5px solid var(--ink)}
+.gap>div{padding:1.1rem 1.3rem 1.2rem}
+.gap b{display:block;font:600 .74rem var(--mono);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.45rem;color:var(--muted)}
+.gap p{margin:0}
+.gap .gap-me{background:var(--ink);color:var(--bg)}
+.gap .gap-me b{color:var(--bg);opacity:.75}
+.gap-l{font:700 1.2rem/1.45 var(--sans);margin:0 0 2.2rem;max-width:40rem}
+@media (max-width:40rem){.gap{grid-template-columns:1fr}}
+
+/* working with me */
+.prom{display:grid;grid-template-columns:1fr;margin:.4rem 0 2.4rem;max-width:22rem}
+.prom>div{background:var(--paper);border:1.5px solid var(--ink);box-shadow:5px 5px 0 var(--line2);padding:.9rem 1.1rem 1rem}
+.prom b{display:block;font:700 2.4rem/1 var(--sans);letter-spacing:-.02em;margin-bottom:.4rem}
+.prom span{font:500 .82rem/1.4 var(--mono);color:var(--muted)}
+.sub-h{font:600 .74rem var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 .9rem}
+.steps{list-style:none;margin:0 0 2.4rem;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.4rem;counter-reset:st}
+.steps li{counter-increment:st;border-top:1.5px solid var(--ink);padding-top:.9rem}
+.steps li:before{content:counter(st);display:grid;place-items:center;width:1.9rem;height:1.9rem;border-radius:50%;background:var(--ink);color:var(--bg);font:700 .85rem var(--mono);margin-bottom:.7rem}
+.steps b{display:block;font-weight:700;line-height:1.35;margin-bottom:.3rem}
+.steps p{margin:0;color:var(--muted);font-size:.95rem}
+.get{list-style:none;margin:0 0 2.2rem;padding:0;display:grid;gap:.55rem}
+.get li{display:flex;gap:.7rem;align-items:baseline}
+.get li:before{content:"";flex:none;width:.95rem;height:.55rem;border-left:2.5px solid var(--acc);border-bottom:2.5px solid var(--acc);transform:translateY(-.25rem) rotate(-45deg)}
+#work .btns{margin-top:2rem}
+@media (max-width:60rem){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:40rem){.steps{grid-template-columns:1fr}.prom{max-width:none}.prom b{font-size:2rem}}
+@media (max-width:40rem){.svc.wk{grid-template-columns:1fr}}
 </style>
 <script>(function(d){d.className+=' js';try{var t=localStorage.getItem('theme');if(t)d.dataset.theme=t}catch(e){}})(document.documentElement)</script>
 </head>
@@ -309,7 +341,7 @@ p{margin:0 0 1rem}
 <header class="hd" id="hd">
 <div class="w hd-in">
 <a class="wm" href="#top"><span aria-hidden="true" class="mk mk-i"></span><span class="wm-n">Thura Tun</span></a>
-<nav aria-label="Main" class="nv" id="nv"><a data-i18n="n.what" href="#services">Was ich teste</a><a data-i18n="n.bugs" href="#bugs">Bug-Reports</a><a data-i18n="n.wallet" href="#wallet">Portemonnaie</a><a data-i18n="n.ct" href="#contact">Kontakt</a><span aria-hidden="true" class="sep"></span><a class="pg" data-i18n="n.dev" data-page="de/devices.html" href="de/devices.html">Geräte</a><a class="pg" data-i18n="n.bg" data-page="de/it-admin.html" href="de/it-admin.html">Werdegang</a><a class="pg" data-i18n="n.play" data-page="de/play.html" href="de/play.html">Spielwiese</a></nav>
+<nav aria-label="Main" class="nv" id="nv"><a data-i18n="n.what" href="#services">Was ich teste</a><a data-i18n="n.bugs" href="#bugs">Bug-Reports</a><a data-i18n="n.wallet" href="#wallet">Portemonnaie</a><a data-i18n="n.ct" href="#contact">Kontakt</a><span aria-hidden="true" class="sep"></span><a class="pg" data-i18n="n.dev" data-page="de/devices.html" href="de/devices">Geräte</a><a class="pg" data-i18n="n.bg" data-page="de/it-admin.html" href="de/it-admin">Werdegang</a><a class="pg" data-i18n="n.play" data-page="de/play.html" href="de/play">Spielwiese</a></nav>
 <div class="tl">
 <div class="lsel"><button aria-expanded="false" aria-haspopup="true" class="tb" data-aria="langA" id="lang" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span id="lcur">EN</span></button><div class="lmenu" hidden="" id="lmenu" role="menu"><button data-l="en" lang="en" role="menuitemradio" type="button">English</button><button data-l="de" lang="de" role="menuitemradio" type="button">Deutsch</button><button data-l="my" lang="my" role="menuitemradio" type="button">မြန်မာ</button></div></div>
 <button class="tb" data-aria="themeA" id="theme" type="button"><svg aria-hidden="true" class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><svg aria-hidden="true" class="sun" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></button>
@@ -340,13 +372,18 @@ p{margin:0 0 1rem}
 <div class="sec-l"><div><b data-i18n="s1.l">Was ich teste</b><span data-i18n="s1.n">Zahlungen zuerst</span></div></div>
 <div>
 <h2 data-i18n="s1.h">Payment-Testing, online und im Laden.</h2>
-<p class="lead" data-i18n="s1.p">Angefangen hat alles im Laden. Als Mystery-Tester habe ich mit allen möglichen Kundenkarten an echten Kassen bezahlt, lokale Geschäfte erkundet und hatte viel Spaß dabei, mit den Leuten an der Kasse zu reden. Dort habe ich auch gelernt, dass viele Payment-Bugs nur genau da auftauchen: mit einer echten Karte, an einem echten Terminal, manchmal in einem Laden mit schlechtem Empfang.</p>
+<p class="lead" data-i18n="s1.p">Angefangen hat alles im Laden. Als Mystery-Tester habe ich mit allen möglichen Kundenkarten an echten Kassen bezahlt, lokale Geschäfte erkundet und hatte viel Spaß dabei, mit dem Personal an der Kasse und im Laden zu reden. Dort habe ich auch gelernt, dass viele Payment-Bugs nur genau da auftauchen: mit einer echten Karte, an einem echten Terminal, manchmal in einem Laden mit schlechtem Empfang.</p>
+<div class="gap">
+<div><b data-i18n="g1.h">In Ihrer Testumgebung</b><p data-i18n="g1.p">Testkarten, die immer funktionieren, ein stabiles Netz und das neueste Handy.</p></div>
+<div class="gap-me"><b data-i18n="g2.h">An der Kasse Ihrer Kunden</b><p data-i18n="g2.p">Echte Karten vieler Banken, ältere Handys und eine volle Kasse mit schlechtem Empfang. Genau dort teste ich.</p></div>
+</div>
+<p class="gap-l" data-i18n="g.l">Ihre Entwickler testen in der Sandbox. Ich teste mit echten Karten an echten Terminals.</p>
 <dl class="svc">
 <div><dt data-i18n="sv1.h">Kartenzahlungen online</dt><dd data-i18n="sv1.p">Checkout, 3-D Secure, gespeicherte Karten, Erstattungen und die Fehlermeldungen, die niemand liest, bis etwas schiefgeht.</dd></div>
 <div><dt data-i18n="sv2.h">Open Banking</dt><dd data-i18n="sv2.p">Kontozugriff und Zahlungsauslösung mit echten Logins bei deutschen Banken, inklusive der Weiterleitung zurück in Ihre App.</dd></div>
 <div><dt data-i18n="sv3.h">Buy now, pay later</dt><dd data-i18n="sv3.p">Der Checkout selbst und was danach passiert. Zum Beispiel, was in der Bonitätsauskunft des Kunden landet.</dd></div>
 <div><dt data-i18n="sv4.h">Zahlungen im Geschäft</dt><dd data-i18n="sv4.p">Kartenterminals in echten Läden: kontaktlos, Chip und PIN, Belege, Stornos. Das habe ich in mehreren deutschen Städten für eines der größten Kartennetzwerke gemacht.</dd></div>
-<div><dt data-i18n="sv5.h">Abos und In-App-Käufe</dt><dd data-i18n="sv5.p">Auf Handys, im Browser, auf Konsolen und TV-Sticks, auch wenn eine Zahlung mittendrin abbricht.</dd></div>
+<div><dt data-i18n="sv5.h">Abos und In-App-Käufe</dt><dd data-i18n="sv5.p">Auf Handys, im Browser, auf Konsolen und Streaming-Geräten, auch wenn eine Zahlung mittendrin abbricht.</dd></div>
 <div><dt data-i18n="sv6.h">Alles andere in Ihrer App</dt><dd data-i18n="sv6.p">Funktionale und explorative Tests von Web- und Mobile-Apps, so dokumentiert, dass man es beheben kann.</dd></div>
 </dl>
 </div>
@@ -376,9 +413,9 @@ p{margin:0 0 1rem}
 <div class="sec-l"><div><b data-i18n="s4.l">Geräte</b><span data-i18n="s4.n">In meinem Regal</span></div></div>
 <div>
 <h2 data-i18n="s4.h" id="dvH">Meine Testgeräte</h2>
-<p class="lead" data-i18n="s4.p">Vom iPhone 5s mit iOS 12 bis zum iPhone 17 Pro Max, von Windows 7 bis macOS Sequoia, dazu Konsolen, TV-Sticks und ein smarter Lautsprecher. Auf älteren Geräten gehen Zahlungsseiten oft zuerst kaputt.</p>
+<p class="lead" data-i18n="s4.p">Vom iPhone 5s mit iOS 12 bis zum iPhone 17 Pro Max, von Windows 7 bis macOS Sequoia, dazu Konsolen, Streaming-Geräte und ein smarter Lautsprecher. Auf älteren Geräten gehen Zahlungsseiten oft zuerst kaputt.</p>
 <ul class="dsum" id="dsum"></ul>
-<p><a class="btn" data-page="de/devices.html" href="de/devices.html"><span data-i18n="s4.b">Alle Geräte ansehen</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></p>
+<p><a class="btn" data-page="de/devices.html" href="de/devices"><span data-i18n="s4.b">Alle Geräte ansehen</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></p>
 </div>
 </section>
 <section class="sec" id="background">
@@ -393,19 +430,34 @@ p{margin:0 0 1rem}
 <li><span class="tl-d" data-i18n="t4.d">Aug. 2019 bis Juni 2022</span><div><b data-i18n="t4.h">Ausbildung zum Fachinformatiker für Systemintegration, CANCOM</b><p data-i18n="t4.p">Server-Hardware, IT-Support und Hardware-Asset-Management.</p></div></li>
 </ol>
 <p class="certs"><span data-i18n="s5.c">Zertifiziert:</span> <a href="itil4-certificate.pdf" rel="noopener" target="_blank">ITIL 4 Foundation</a>, <a href="https://www.credly.com/badges/9dc0fa04-e932-4269-af0b-c82157c03073" rel="noopener" target="_blank">Microsoft Azure Fundamentals (AZ-900)</a></p>
-<p><a class="btn" data-page="de/it-admin.html" href="de/it-admin.html"><span data-i18n="s5.b">Mehr zu meinem IT-Werdegang</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></p>
+<p><a class="btn" data-page="de/it-admin.html" href="de/it-admin"><span data-i18n="s5.b">Mehr zu meinem IT-Werdegang</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></p>
 </div>
 </section>
 <section class="sec" id="work">
 <div class="sec-l"><div><b data-i18n="w.l">Zusammenarbeit</b><span data-i18n="w.n">Einfach und schnell</span></div></div>
 <div>
 <h2 data-i18n="w.h">So können wir zusammenarbeiten</h2>
+<div class="prom">
+<div><b>24h</b><span data-i18n="p1">Antwort und Start innerhalb von 24 Stunden, oft noch am selben Tag</span></div>
+</div>
+<h3 class="sub-h" data-i18n="w.st">So läuft es ab</h3>
+<ol class="steps">
+<li><b data-i18n="st1.h">Schreiben Sie mir oder buchen Sie ein Gespräch</b><p data-i18n="st1.p">Ein paar Zeilen zu Ihrem Produkt und dem, was Ihnen Sorgen macht, reichen.</p></li>
+<li><b data-i18n="st2.h">Klarer Umfang</b><p data-i18n="st2.p">Wir legen Zahlungsarten, Geräte und Zeitplan fest. Sie bekommen ein klares Angebot.</p></li>
+<li><b data-i18n="st3.h">Ich teste</b><p data-i18n="st3.p">Mit meinen eigenen Karten, Konten und Geräten, online oder im Laden.</p></li>
+<li><b data-i18n="st4.h">Sie bekommen den Report</b><p data-i18n="st4.p">Jeder Bug so beschrieben, dass Ihre Entwickler ihn beheben können.</p></li>
+</ol>
+<h3 class="sub-h" data-i18n="w.get">Was Sie bekommen</h3>
+<ul class="get">
+<li data-i18n="get1">Ein echter Bug-Report, getestet auf echten Geräten</li>
+<li data-i18n="get2">Bildschirmaufnahmen, markierte Screenshots und Logdateien im gewünschten Format</li>
+<li data-i18n="get3">Antwort innerhalb von 24 Stunden</li>
+</ul>
 <dl class="svc wk">
-<div><dt data-i18n="w1.h">Start innerhalb von 24 Stunden</dt><dd data-i18n="w1.p">Meistens kann ich am selben oder am nächsten Tag loslegen.</dd></div>
 <div><dt data-i18n="w2.h">Kleine Aufträge in wenigen Stunden</dt><dd data-i18n="w2.p">Einfache Testfälle, etwa eine Open-Banking-Strecke prüfen oder Testbestellungen mit bestimmten Zahlungsmitteln aufgeben, sind oft in wenigen Stunden erledigt.</dd></div>
 <div><dt data-i18n="w3.h">Größere Projekte</dt><dd data-i18n="w3.p">Regressionsrunden, Testpläne oder Tests im Laden in mehreren Städten. Wir klären zuerst den Umfang, dann lege ich los.</dd></div>
 <div><dt data-i18n="w4.h">Remote oder vor Ort</dt><dd data-i18n="w4.p">Remote aus Deutschland, oder in Geschäften überall in Deutschland, wenn der Test ein echtes Terminal braucht.</dd></div>
-<div><dt data-i18n="w5.h">Preis</dt><dd data-i18n="w5.p">Hängt davon ab, was Sie testen lassen möchten. Schreiben Sie mir ein paar Zeilen, wir vereinbaren ein kurzes Gespräch, und Sie bekommen ein klares Angebot.</dd></div>
+<div><dt data-i18n="w5.h">Preis</dt><dd data-i18n="w5.p">Hängt davon ab, was Sie testen lassen möchten. Schreiben Sie mir ein paar Zeilen oder buchen Sie ein Gespräch, und Sie bekommen ein klares Angebot.</dd></div>
 </dl>
 </div>
 </section>
@@ -417,7 +469,7 @@ p{margin:0 0 1rem}
 <p data-i18n="ct.p">Kartenzahlungen, Open Banking, Buy now, pay later, Terminals im Laden und Abos: Ich teste all das mit echten Karten auf echten Geräten. Also, welche Zahlung soll am Launch-Tag auf keinen Fall scheitern?</p>
 <div class="btns">
 <a class="btn primary" data-em="ed.nutaruht@ollah" data-keep="" href="#"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="1" width="18" x="3" y="5"></rect><path d="m3 7 9 6 9-6"></path></svg><span data-i18n="ct.mail">E-Mail schreiben</span></a>
-<a class="btn" data-href-de="cv-de.pdf" data-href-en="cv.pdf" href="cv-de.pdf" rel="noopener" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5M9 13h6M9 17h6"></path></svg><span data-i18n="ct.cv">Lebenslauf</span></a>
+<a class="btn" href="https://calendar.app.google/HuX3KkZ1Y64eFAcQ6" rel="noopener" target="_blank"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="16" rx="1" width="18" x="3" y="5"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg><span data-i18n="ct.book">30-Min.-Gespräch buchen</span></a>
 <a class="btn" href="https://www.linkedin.com/in/tunthura/" rel="noopener"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11.5H3zM9.5 9.75h3.8v1.6h.05c.55-1 1.9-1.95 3.85-1.95 4.05 0 4.8 2.65 4.8 6.1v5.75h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.35-2 2.7v5.2h-4z"></path></svg>LinkedIn</a>
 </div>
 </div>
@@ -439,28 +491,29 @@ p{margin:0 0 1rem}
 </main>
 <div class="w">
 <footer class="ft">
-<div class="ft-l"><span aria-label="Thura the Tester logo" class="mk mk-f" role="img"></span><span data-i18n="ft.c">© 2026 Thura Tun, Frankfurt am Main</span></div>
-<nav aria-label="Footer"><a data-page="impressum.html" href="impressum.html">Impressum</a><a data-page="datenschutz.html" href="datenschutz.html">Datenschutz</a></nav>
+<nav aria-label="Footer"><a data-page="impressum.html" href="impressum">Impressum</a><a data-page="datenschutz.html" href="datenschutz">Datenschutz</a><a data-page="404.html" href="404">404</a></nav>
+<div class="ft-l"><span data-i18n="ft.c">© 2026 Thura Tun, Frankfurt am Main</span><span class="ver" title="Website version">v3.2</span></div>
 </footer>
 </div>
 <script>
 (function(){
-var PL={lang:'de',en:'index.html',de:'de/index.html'};
+var PL={lang:'de',en:'./',de:'de/'};
   /* ---------- homepage texts (English is in the HTML) ---------- */
   var DE={
-    'w.l':'Zusammenarbeit','w.n':'Einfach und schnell','w.h':'So können wir zusammenarbeiten','w1.h':'Start innerhalb von 24 Stunden','w1.p':'Meistens kann ich am selben oder am nächsten Tag loslegen.','w2.h':'Kleine Aufträge in wenigen Stunden','w2.p':'Einfache Testfälle, etwa eine Open-Banking-Strecke prüfen oder Testbestellungen mit bestimmten Zahlungsmitteln aufgeben, sind oft in wenigen Stunden erledigt.','w3.h':'Größere Projekte','w3.p':'Regressionsrunden, Testpläne oder Tests im Laden in mehreren Städten. Wir klären zuerst den Umfang, dann lege ich los.','w4.h':'Remote oder vor Ort','w4.p':'Remote aus Deutschland, oder in Geschäften überall in Deutschland, wenn der Test ein echtes Terminal braucht.','w5.h':'Preis','w5.p':'Hängt davon ab, was Sie testen lassen möchten. Schreiben Sie mir ein paar Zeilen, wir vereinbaren ein kurzes Gespräch, und Sie bekommen ein klares Angebot.',
+    'g1.h':'In Ihrer Testumgebung','g1.p':'Testkarten, die immer funktionieren, ein stabiles Netz und das neueste Handy.','g2.h':'An der Kasse Ihrer Kunden','g2.p':'Echte Karten vieler Banken, ältere Handys und eine volle Kasse mit schlechtem Empfang. Genau dort teste ich.','g.l':'Ihre Entwickler testen in der Sandbox. Ich teste mit echten Karten an echten Terminals.','p1':'Antwort und Start innerhalb von 24 Stunden, oft noch am selben Tag','w.st':'So läuft es ab','st1.h':'Schreiben Sie mir oder buchen Sie ein Gespräch','st1.p':'Ein paar Zeilen zu Ihrem Produkt und dem, was Ihnen Sorgen macht, reichen.','st2.h':'Klarer Umfang','st2.p':'Wir legen Zahlungsarten, Geräte und Zeitplan fest. Sie bekommen ein klares Angebot.','st3.h':'Ich teste','st3.p':'Mit meinen eigenen Karten, Konten und Geräten, online oder im Laden.','st4.h':'Sie bekommen den Report','st4.p':'Jeder Bug so beschrieben, dass Ihre Entwickler ihn beheben können.','w.get':'Was Sie bekommen','get1':'Ein echter Bug-Report, getestet auf echten Geräten','get2':'Bildschirmaufnahmen, markierte Screenshots und Logdateien im gewünschten Format','get3':'Antwort innerhalb von 24 Stunden','w.mail':'Oder schreiben Sie mir',
+    'w.l':'Zusammenarbeit','w.n':'Einfach und schnell','w.h':'So können wir zusammenarbeiten','w1.h':'Start innerhalb von 24 Stunden','w1.p':'Meistens kann ich am selben oder am nächsten Tag loslegen.','w2.h':'Kleine Aufträge in wenigen Stunden','w2.p':'Einfache Testfälle, etwa eine Open-Banking-Strecke prüfen oder Testbestellungen mit bestimmten Zahlungsmitteln aufgeben, sind oft in wenigen Stunden erledigt.','w3.h':'Größere Projekte','w3.p':'Regressionsrunden, Testpläne oder Tests im Laden in mehreren Städten. Wir klären zuerst den Umfang, dann lege ich los.','w4.h':'Remote oder vor Ort','w4.p':'Remote aus Deutschland, oder in Geschäften überall in Deutschland, wenn der Test ein echtes Terminal braucht.','w5.h':'Preis','w5.p':'Hängt davon ab, was Sie testen lassen möchten. Schreiben Sie mir ein paar Zeilen oder buchen Sie ein Gespräch, und Sie bekommen ein klares Angebot.',
         'h.kick':'Payment-Tester · Deutschland',
         'h.h1':'Ich teste Zahlungen so, wie Ihre Kunden <span class="mark">wirklich bezahlen</span>.',
     'h.p':'Mit eigenen Karten und Bankkonten, einer Schublade voller Handys und echten Kartenterminals in deutschen Geschäften. Wenn eine Zahlung scheitert, bekommen Sie einen Bug-Report, den Ihre Entwickler beim ersten Versuch nachstellen können.',
     'h.b1':'Ein paar Bug-Reports lesen','h.b2':'Kontakt aufnehmen',
     'st.h':'Kontoauszug','st.asof':'Stand','st.r1':'Karten und Bankkonten','st.r2':'In Deutschland ausgegeben','st.r3':'Deutsche Banken','st.r4':'Testgeräte','st.r5':'Gemeldete Bugs','st.ft':'Offen für neue Projekte',
     's1.l':'Was ich teste','s1.n':'Zahlungen zuerst','s1.h':'Payment-Testing, online und im Laden.',
-    's1.p':'Angefangen hat alles im Laden. Als Mystery-Tester habe ich mit allen möglichen Kundenkarten an echten Kassen bezahlt, lokale Geschäfte erkundet und hatte viel Spaß dabei, mit den Leuten an der Kasse zu reden. Dort habe ich auch gelernt, dass viele Payment-Bugs nur genau da auftauchen: mit einer echten Karte, an einem echten Terminal, manchmal in einem Laden mit schlechtem Empfang.',
+    's1.p':'Angefangen hat alles im Laden. Als Mystery-Tester habe ich mit allen möglichen Kundenkarten an echten Kassen bezahlt, lokale Geschäfte erkundet und hatte viel Spaß dabei, mit dem Personal an der Kasse und im Laden zu reden. Dort habe ich auch gelernt, dass viele Payment-Bugs nur genau da auftauchen: mit einer echten Karte, an einem echten Terminal, manchmal in einem Laden mit schlechtem Empfang.',
     'sv1.h':'Kartenzahlungen online','sv1.p':'Checkout, 3-D Secure, gespeicherte Karten, Erstattungen und die Fehlermeldungen, die niemand liest, bis etwas schiefgeht.',
     'sv2.h':'Open Banking','sv2.p':'Kontozugriff und Zahlungsauslösung mit echten Logins bei deutschen Banken, inklusive der Weiterleitung zurück in Ihre App.',
     'sv3.h':'Buy now, pay later','sv3.p':'Der Checkout selbst und was danach passiert. Zum Beispiel, was in der Bonitätsauskunft des Kunden landet.',
     'sv4.h':'Zahlungen im Geschäft','sv4.p':'Kartenterminals in echten Läden: kontaktlos, Chip und PIN, Belege, Stornos. Das habe ich in mehreren deutschen Städten für eines der größten Kartennetzwerke gemacht.',
-    'sv5.h':'Abos und In-App-Käufe','sv5.p':'Auf Handys, im Browser, auf Konsolen und TV-Sticks, auch wenn eine Zahlung mittendrin abbricht.',
+    'sv5.h':'Abos und In-App-Käufe','sv5.p':'Auf Handys, im Browser, auf Konsolen und Streaming-Geräten, auch wenn eine Zahlung mittendrin abbricht.',
     'sv6.h':'Alles andere in Ihrer App','sv6.p':'Funktionale und explorative Tests von Web- und Mobile-Apps, so dokumentiert, dass man es beheben kann.',
     's2.l':'Bug-Reports','s2.n':'Echt, anonymisiert','s2.h':'Ein paar Bugs, die ich gefunden habe.',
     's2.p':'Echte Reports aus den letzten Jahren, gekürzt, ohne Kundennamen, IDs und Kontodaten. Bisher habe ich über 600 Bugs gemeldet und bin auf der Testplattform, auf der ich hauptsächlich arbeite, mit Gold bewertet. Alle zehn hier wurden angenommen und als außergewöhnlich wertvoll bewertet.',
@@ -468,7 +521,7 @@ var PL={lang:'de',en:'index.html',de:'de/index.html'};
     's3.p':'Jede Karte und jedes Konto hier läuft auf meinen Namen. So teste ich mit echten Herausgebern aus vielen Ländern und nicht nur mit den Testnummern, die alle anderen auch benutzen.',
     's3.also':'Außerdem teste ich mit diesen Zahlungsarten:','s3.bh':'Deutsche Banken, bei denen ich ein Konto habe',
     's4.l':'Geräte','s4.n':'In meinem Regal','s4.h':'Meine Testgeräte',
-    's4.p':'Vom iPhone 5s mit iOS 12 bis zum iPhone 17 Pro Max, von Windows 7 bis macOS Sequoia, dazu Konsolen, TV-Sticks und ein smarter Lautsprecher. Auf älteren Geräten gehen Zahlungsseiten oft zuerst kaputt.',
+    's4.p':'Vom iPhone 5s mit iOS 12 bis zum iPhone 17 Pro Max, von Windows 7 bis macOS Sequoia, dazu Konsolen, Streaming-Geräte und ein smarter Lautsprecher. Auf älteren Geräten gehen Zahlungsseiten oft zuerst kaputt.',
     's4.b':'Alle Geräte ansehen',
     's5.l':'Werdegang','s5.n':'IT seit 2019','s5.h':'Ich bin über die IT-Administration zum Testen gekommen.',
     's5.p':'Das ist bis heute mein Hauptjob. Wenn ein Test scheitert, prüfe ich Zertifikate, Netzwerk, Berechtigungen und Konfiguration, bevor ich es einen Bug nenne. Was ich melde, ist also ein echtes Problem.',
@@ -480,19 +533,20 @@ var PL={lang:'de',en:'index.html',de:'de/index.html'};
     'ct.h':'Steht ein Release an?','ct.p':'Kartenzahlungen, Open Banking, Buy now, pay later, Terminals im Laden und Abos: Ich teste all das mit echten Karten auf echten Geräten. Also, welche Zahlung soll am Launch-Tag auf keinen Fall scheitern?'
   };
   var MY={
-    'w.l':'အတူလုပ်ဆောင်ခြင်း','w.n':'ရိုးရှင်းပြီး မြန်ဆန်','w.h':'ဘယ်လို အတူလုပ်နိုင်မလဲ','w1.h':'24 နာရီအတွင်း စတင်နိုင်','w1.p':'အများအားဖြင့် တစ်နေ့တည်း ဒါမှမဟုတ် နောက်တစ်နေ့ စတင်နိုင်ပါတယ်။','w2.h':'အလုပ်သေးတွေကို နာရီပိုင်းအတွင်း','w2.p':'Open banking flow စစ်ဆေးခြင်း ဒါမှမဟုတ် သတ်မှတ်ထားတဲ့ ငွေပေးချေနည်းနဲ့ test order တင်ခြင်းလို ရိုးရှင်းတဲ့ test case တွေကို နာရီပိုင်းအတွင်း ပြီးစီးလေ့ရှိပါတယ်။','w3.h':'ပရောဂျက်ကြီးများ','w3.p':'Regression စမ်းသပ်မှု၊ test plan ဒါမှမဟုတ် မြို့အများအပြားက ဆိုင်တွေမှာ စမ်းသပ်ခြင်း။ အရင်ဆုံး scope ကို သဘောတူပြီးမှ စတင်ပါတယ်။','w4.h':'Remote ဒါမှမဟုတ် နေရာတိုင်း','w4.p':'ဂျာမနီကနေ remote၊ ဒါမှမဟုတ် တကယ့်ကတ်စက် လိုအပ်ရင် ဂျာမနီတစ်ဝှမ်းက ဆိုင်တွေမှာ။','w5.h':'စျေးနှုန်း','w5.p':'ဘာကို စမ်းသပ်ချင်လဲပေါ် မူတည်ပါတယ်။ အရင်ဆုံး စာနည်းနည်းရေးပို့ပါ၊ ဖုန်းခဏပြောပြီး စျေးနှုန်းအတိအကျ ပေးပါမယ်။',
+    'g1.h':'သင့် test environment မှာ','g1.p':'အမြဲအလုပ်လုပ်တဲ့ test card တွေ၊ တည်ငြိမ်တဲ့ network နဲ့ နောက်ဆုံးပေါ် ဖုန်း။','g2.h':'သင့်ဖောက်သည်တွေရဲ့ checkout မှာ','g2.p':'ဘဏ်အမျိုးမျိုးက တကယ့်ကတ်တွေ၊ ဖုန်းအဟောင်းတွေနဲ့ လိုင်းမကောင်းတဲ့ လူများတဲ့ ကောင်တာ။ အဲဒီမှာ စမ်းသပ်ပါတယ်။','g.l':'Developer တွေက sandbox ထဲမှာ စမ်းသပ်ပါတယ်။ ဒီမှာတော့ တကယ့်ကတ်တွေနဲ့ တကယ့် terminal တွေမှာ စမ်းသပ်ပါတယ်။','p1':'24 နာရီအတွင်း အကြောင်းပြန်ပြီး စတင်ပါတယ်၊ များသောအားဖြင့် တစ်နေ့တည်း','w.st':'လုပ်ဆောင်ပုံ','st1.h':'စာရေးပို့ပါ ဒါမှမဟုတ် call ချိန်းပါ','st1.p':'ထုတ်ကုန်အကြောင်းနဲ့ စိုးရိမ်တာတွေကို စာကြောင်းအနည်းငယ် ရေးရုံပါပဲ။','st2.h':'ပမာဏ ရှင်းရှင်း','st2.p':'Payment နည်းလမ်း၊ စက်ပစ္စည်းနဲ့ အချိန်ကို သဘောတူကြပါမယ်။ စျေးနှုန်းအတိအကျ ရပါမယ်။','st3.h':'စမ်းသပ်ခြင်း','st3.p':'ကိုယ်ပိုင် ကတ်၊ အကောင့်နဲ့ စက်ပစ္စည်းတွေနဲ့ online ဒါမှမဟုတ် ဆိုင်တွေမှာ။','st4.h':'Report ရယူခြင်း','st4.p':'Bug တိုင်းကို developer တွေ ပြင်နိုင်အောင် ရေးပေးပါတယ်။','w.get':'ရရှိမည့်အရာ','get1':'တကယ့်စက်တွေပေါ်မှာ စမ်းသပ်ထားတဲ့ တကယ့် bug report','get2':'Screen recording၊ အမှတ်အသားပါ screenshot နဲ့ လိုချင်တဲ့ format နဲ့ log file','get3':'24 နာရီအတွင်း အကြောင်းပြန်ချက်','w.mail':'ဒါမှမဟုတ် စာရေးပို့ပါ',
+    'w.l':'အတူလုပ်ဆောင်ခြင်း','w.n':'ရိုးရှင်းပြီး မြန်ဆန်','w.h':'ဘယ်လို အတူလုပ်နိုင်မလဲ','w1.h':'24 နာရီအတွင်း စတင်နိုင်','w1.p':'အများအားဖြင့် တစ်နေ့တည်း ဒါမှမဟုတ် နောက်တစ်နေ့ စတင်နိုင်ပါတယ်။','w2.h':'အလုပ်သေးတွေကို နာရီပိုင်းအတွင်း','w2.p':'Open banking flow စစ်ဆေးခြင်း ဒါမှမဟုတ် သတ်မှတ်ထားတဲ့ ငွေပေးချေနည်းနဲ့ test order တင်ခြင်းလို ရိုးရှင်းတဲ့ test case တွေကို နာရီပိုင်းအတွင်း ပြီးစီးလေ့ရှိပါတယ်။','w3.h':'ပရောဂျက်ကြီးများ','w3.p':'Regression စမ်းသပ်မှု၊ test plan ဒါမှမဟုတ် မြို့အများအပြားက ဆိုင်တွေမှာ စမ်းသပ်ခြင်း။ အရင်ဆုံး scope ကို သဘောတူပြီးမှ စတင်ပါတယ်။','w4.h':'Remote ဒါမှမဟုတ် နေရာတိုင်း','w4.p':'ဂျာမနီကနေ remote၊ ဒါမှမဟုတ် တကယ့်ကတ်စက် လိုအပ်ရင် ဂျာမနီတစ်ဝှမ်းက ဆိုင်တွေမှာ။','w5.h':'စျေးနှုန်း','w5.p':'ဘာကို စမ်းသပ်ချင်လဲပေါ် မူတည်ပါတယ်။ စာနည်းနည်းရေးပို့ပါ ဒါမှမဟုတ် call ချိန်းပါ၊ စျေးနှုန်းအတိအကျ ပေးပါမယ်။',
         'h.kick':'Payment tester · ဂျာမနီ',
         'h.h1':'ဖောက်သည်တွေ <span class="mark">တကယ်ငွေပေးချေသလို</span> payment တွေကို စမ်းသပ်ပါတယ်။',
     'h.p':'ကိုယ်ပိုင် ကတ်နဲ့ ဘဏ်အကောင့်တွေ၊ ဖုန်းအများကြီးနဲ့ ဂျာမနီက ဆိုင်တွေမှာရှိတဲ့ တကယ့်ကတ်စက်တွေနဲ့ စမ်းသပ်ပါတယ်။ ငွေပေးချေမှု ပျက်ရင် developer တွေ ပထမအကြိမ်မှာတင် ပြန်လုပ်ကြည့်နိုင်တဲ့ bug report ကို ရမှာပါ။',
     'h.b1':'Bug report အချို့ ဖတ်ရန်','h.b2':'ဆက်သွယ်ရန်',
     'st.h':'စာရင်းရှင်းတမ်း','st.asof':'ရက်စွဲ','st.r1':'ကတ်နဲ့ ဘဏ်အကောင့်','st.r2':'ဂျာမနီထုတ်','st.r3':'ဂျာမန်ဘဏ်','st.r4':'စမ်းသပ်စက်','st.r5':'Report လုပ်ခဲ့သော bug','st.ft':'ပရောဂျက်အသစ် လက်ခံနေပါတယ်',
     's1.l':'စမ်းသပ်သည့်အရာ','s1.n':'Payment ဦးစားပေး','s1.h':'Payment testing၊ အွန်လိုင်းနဲ့ ဆိုင်ထဲမှာ။',
-    's1.p':'အားလုံးက ဆိုင်တွေကနေ စခဲ့တာပါ။ Mystery tester အနေနဲ့ ဖောက်သည်ပေးတဲ့ ကတ်အမျိုးမျိုးနဲ့ တကယ့်ကောင်တာတွေမှာ ငွေချေခဲ့ပြီး ဒေသခံဆိုင်တွေကို လှည့်လည်ကာ ကောင်တာက လူတွေနဲ့ စကားပြောရတာ အရမ်းပျော်ခဲ့ပါတယ်။ Payment bug အများအပြားဟာ အဲဒီမှာပဲ ပေါ်လာတတ်တယ်ဆိုတာလည်း အဲဒီကနေ သိခဲ့ရပါတယ်: တကယ့်ကတ်၊ တကယ့်စက်၊ တခါတလေ ဖုန်းလိုင်းမကောင်းတဲ့ ဆိုင်ထဲမှာ။',
+    's1.p':'အားလုံးက ဆိုင်တွေကနေ စခဲ့တာပါ။ Mystery tester အနေနဲ့ ဖောက်သည်ပေးတဲ့ ကတ်အမျိုးမျိုးနဲ့ တကယ့်ကောင်တာတွေမှာ ငွေချေခဲ့ပြီး ဒေသခံဆိုင်တွေကို လှည့်လည်ကာ ငွေကိုင်တွေ၊ ဆိုင်ဝန်ထမ်းတွေနဲ့ စကားပြောရတာ အရမ်းပျော်ခဲ့ပါတယ်။ Payment bug အများအပြားဟာ အဲဒီမှာပဲ ပေါ်လာတတ်တယ်ဆိုတာလည်း အဲဒီကနေ သိခဲ့ရပါတယ်: တကယ့်ကတ်၊ တကယ့်စက်၊ တခါတလေ ဖုန်းလိုင်းမကောင်းတဲ့ ဆိုင်ထဲမှာ။',
     'sv1.h':'အွန်လိုင်း ကတ်ငွေပေးချေမှု','sv1.p':'Checkout၊ 3-D Secure၊ သိမ်းထားတဲ့ ကတ်၊ ငွေပြန်အမ်းခြင်းနဲ့ တစ်ခုခုမှားမှ လူတွေဖတ်ကြတဲ့ error message များ။',
     'sv2.h':'Open banking','sv2.p':'ဂျာမန်ဘဏ်တွေမှာ တကယ့် login နဲ့ အကောင့်ချိတ်ဆက်ခြင်း၊ ငွေလွှဲစတင်ခြင်း၊ app ဆီ ပြန်ရောက်တဲ့ redirect အပါအဝင်။',
     'sv3.h':'Buy now, pay later','sv3.p':'Checkout ကိုယ်တိုင်နဲ့ ပြီးနောက် ဖြစ်တာတွေ။ ဥပမာ ဖောက်သည်ရဲ့ credit report ထဲ ဘာရောက်သွားလဲ။',
     'sv4.h':'ဆိုင်တွင်း ငွေပေးချေမှု','sv4.p':'တကယ့်ဆိုင်တွေက ကတ်စက်များ: contactless၊ chip နဲ့ PIN၊ ပြေစာ၊ ပယ်ဖျက်ခြင်း။ ကမ္ဘာ့အကြီးဆုံး ကတ်ကွန်ရက်တစ်ခုအတွက် ဂျာမနီမြို့ အတော်များများမှာ လုပ်ခဲ့ပါတယ်။',
-    'sv5.h':'Subscription နဲ့ in-app ဝယ်ယူမှု','sv5.p':'ဖုန်း၊ browser၊ ဂိမ်းစက်နဲ့ TV stick တွေပေါ်မှာ၊ ငွေပေးချေမှု တစ်ဝက်မှာ ရပ်သွားရင် ဘာဖြစ်လဲ ဆိုတာအပါအဝင်။',
+    'sv5.h':'Subscription နဲ့ in-app ဝယ်ယူမှု','sv5.p':'ဖုန်း၊ browser၊ ဂိမ်းစက်နဲ့ Streaming စက် တွေပေါ်မှာ၊ ငွေပေးချေမှု တစ်ဝက်မှာ ရပ်သွားရင် ဘာဖြစ်လဲ ဆိုတာအပါအဝင်။',
     'sv6.h':'App ထဲက ကျန်တဲ့အရာအားလုံး','sv6.p':'Web နဲ့ mobile app တွေရဲ့ functional နဲ့ exploratory testing၊ ပြင်ဆင်နိုင်အောင် ရေးသားပေးပါတယ်။',
     's2.l':'Bug report များ','s2.n':'အစစ်၊ အမည်ဖျောက်ထား','s2.h':'ရှာတွေ့ခဲ့တဲ့ bug အချို့။',
     's2.p':'လွန်ခဲ့တဲ့ နှစ်အနည်းငယ်က တကယ့် report တွေကို client အမည်၊ ID နဲ့ အကောင့်အချက်အလက်တွေ ဖယ်ပြီး အတိုချုံ့ထားပါတယ်။ အခုထိ bug 600 ကျော် report လုပ်ခဲ့ပြီး အဓိကလုပ်တဲ့ testing platform မှာ Gold အဆင့် ရထားပါတယ်။ အောက်က report ဆယ်ခုလုံး approve ဖြစ်ပြီး exceptionally valuable အဆင့် ရခဲ့ပါတယ်။',
@@ -500,7 +554,7 @@ var PL={lang:'de',en:'index.html',de:'de/index.html'};
     's3.p':'ဒီမှာရှိတဲ့ ကတ်နဲ့ အကောင့်အားလုံး ကိုယ်ပိုင်နာမည်နဲ့ပါ။ ဒါကြောင့် လူတိုင်းသုံးတဲ့ test number တွေတင်မကဘဲ နိုင်ငံအများအပြားက တကယ့်ဘဏ်တွေရဲ့ ကတ်နဲ့ စမ်းနိုင်ပါတယ်။',
     's3.also':'ဒီ ငွေပေးချေနည်းတွေနဲ့လည်း စမ်းသပ်ပါတယ်:','s3.bh':'အကောင့်ရှိတဲ့ ဂျာမန်ဘဏ်များ',
     's4.l':'စက်ပစ္စည်းများ','s4.n':'စင်ပေါ်မှာ','s4.h':'စမ်းသပ်စက်များ',
-    's4.p':'iOS 12 သုံးတဲ့ iPhone 5s ကနေ iPhone 17 Pro Max အထိ၊ Windows 7 ကနေ macOS Sequoia အထိ၊ ဂိမ်းစက်၊ TV stick နဲ့ smart speaker တွေလည်း ပါပါတယ်။ Payment စာမျက်နှာတွေဟာ စက်အဟောင်းတွေမှာ အရင်ဆုံး ပျက်တတ်ပါတယ်။',
+    's4.p':'iOS 12 သုံးတဲ့ iPhone 5s ကနေ iPhone 17 Pro Max အထိ၊ Windows 7 ကနေ macOS Sequoia အထိ၊ ဂိမ်းစက်၊ Streaming စက် နဲ့ smart speaker တွေလည်း ပါပါတယ်။ Payment စာမျက်နှာတွေဟာ စက်အဟောင်းတွေမှာ အရင်ဆုံး ပျက်တတ်ပါတယ်။',
     's4.b':'စက်စာရင်း အပြည့်အစုံ',
     's5.l':'နောက်ခံ','s5.n':'2019 ကတည်းက IT','s5.h':'IT administration ကနေ testing ကို ရောက်လာခဲ့တာပါ။',
     's5.p':'ဒါက အခုထိ နေ့စဉ်အလုပ်ပါ။ Test တစ်ခု fail ဖြစ်ရင် bug လို့ မခေါ်ခင် certificate၊ network၊ permission နဲ့ configuration ကို အရင်စစ်ပါတယ်။ ဒါကြောင့် report လုပ်တာဟာ တကယ့်ပြဿနာပါ။',
@@ -648,7 +702,7 @@ var PL={lang:'de',en:'index.html',de:'de/index.html'};
   var CAT={
     'Desktop':{en:'Desktop',de:'Desktop',my:'Desktop ကွန်ပျူတာ',o:1},'Laptop':{en:'Laptops',de:'Laptops',my:'Laptop',o:2},'Mobile':{en:'Phones',de:'Smartphones',my:'ဖုန်း',o:3},
     'Tablet':{en:'Tablets',de:'Tablets',my:'Tablet',o:4},'Smartwatches':{en:'Smartwatches',de:'Smartwatches',my:'Smartwatch',o:5},'Wearables':{en:'Wearables',de:'Wearables',my:'ဝတ်ဆင်ပစ္စည်း',o:6},
-    'Streaming Devices':{en:'TV sticks',de:'TV-Sticks',my:'TV stick',o:7},'Smart TV':{en:'Smart TV',de:'Smart-TV',my:'Smart TV',o:8},
+    'Streaming Devices':{en:'Streaming devices',de:'Streaming-Geräte',my:'Streaming စက်',o:7},'Smart TV':{en:'Smart TV',de:'Smart-TV',my:'Smart TV',o:8},
     'Gaming Consoles':{en:'Consoles',de:'Spielkonsolen',my:'ဂိမ်းစက်',o:9},'Smart Home Devices':{en:'Smart home',de:'Smart Home',my:'Smart home',o:10}
   };
   function catKey(c){c=String(c||'').trim();for(var k in CAT)if(k.toLowerCase()===c.toLowerCase())return k;return c||'Other'}
@@ -673,10 +727,10 @@ var PL={lang:'de',en:'index.html',de:'de/index.html'};
   /* ---------- shared core: language, theme, menu, mail, small helpers ---------- */
   var COMMON={
     de:{'wm.s':'Payment-Tester','menu':'Menü','n.what':'Was ich teste','n.bugs':'Bug-Reports','n.wallet':'Portemonnaie','n.dev':'Geräte','n.bg':'Werdegang','n.ct':'Kontakt','n.play':'Spielwiese',
-      'ct.mail':'E-Mail schreiben','ct.cv':'Lebenslauf','rc.sub':'Payment- und Softwaretests','rc.mail':'E-Mail','rc.loc':'Standort','rc.locv':'Deutschland','rc.where':'Einsatz','rc.wherev':'Remote und vor Ort in ganz Deutschland','rc.lang':'Sprachen','rc.langv':'Deutsch · Englisch · Birmanisch','rc.tot':'Erstes Gespräch','rc.totv':'0,00 €','rc.ok':'GENEHMIGT',
+      'ct.mail':'E-Mail schreiben','ct.book':'30-Min.-Gespräch buchen','rc.sub':'Payment- und Softwaretests','rc.mail':'E-Mail','rc.loc':'Standort','rc.locv':'Deutschland','rc.where':'Einsatz','rc.wherev':'Remote und vor Ort in ganz Deutschland','rc.lang':'Sprachen','rc.langv':'Deutsch · Englisch · Birmanisch','rc.tot':'Erstes Gespräch','rc.totv':'0,00 €','rc.ok':'GENEHMIGT',
       'ft.c':'© 2026 Thura Tun, Frankfurt am Main','ft.play':'Spielwiese','back':'Zur Startseite'},
     my:{'wm.s':'payment tester','menu':'မီနူး','n.what':'စမ်းသပ်သည့်အရာ','n.bugs':'Bug report များ','n.wallet':'ပိုက်ဆံအိတ်','n.dev':'စက်ပစ္စည်းများ','n.bg':'နောက်ခံ','n.ct':'ဆက်သွယ်ရန်','n.play':'ကစားကွင်း',
-      'ct.mail':'အီးမေးလ် ပို့ရန်','ct.cv':'CV','rc.sub':'Payment နဲ့ software testing','rc.mail':'အီးမေးလ်','rc.loc':'နေရာ','rc.locv':'ဂျာမနီ','rc.where':'အလုပ်ပုံစံ','rc.wherev':'Remote နဲ့ ဂျာမနီတစ်ဝှမ်း ဆိုင်များတွင်','rc.lang':'ဘာသာစကား','rc.langv':'ဂျာမန် · အင်္ဂလိပ် · မြန်မာ','rc.tot':'ပထမဆုံး ဆွေးနွေးမှု','rc.ok':'အတည်ပြုပြီး',
+      'ct.mail':'အီးမေးလ် ပို့ရန်','ct.book':'30 မိနစ် ခေါ်ဆိုမှု ချိန်းရန်','rc.sub':'Payment နဲ့ software testing','rc.mail':'အီးမေးလ်','rc.loc':'နေရာ','rc.locv':'ဂျာမနီ','rc.where':'အလုပ်ပုံစံ','rc.wherev':'Remote နဲ့ ဂျာမနီတစ်ဝှမ်း ဆိုင်များတွင်','rc.lang':'ဘာသာစကား','rc.langv':'ဂျာမန် · အင်္ဂလိပ် · မြန်မာ','rc.tot':'ပထမဆုံး ဆွေးနွေးမှု','rc.ok':'အတည်ပြုပြီး',
       'ft.c':'© 2026 Thura Tun၊ Frankfurt am Main','ft.play':'ကစားကွင်း','back':'ပင်မစာမျက်နှာသို့'}
   };
   var SC={
@@ -697,12 +751,15 @@ var PL={lang:'de',en:'index.html',de:'de/index.html'};
   function T(k){var a=[S[LANG],SC[LANG],S.en,SC.en];for(var i=0;i<a.length;i++)if(a[i]&&a[i][k]!=null)return a[i][k];return ''}
   function TX(k){var a=[LANG==='de'&&typeof DE!=='undefined'?DE:LANG==='my'&&typeof MY!=='undefined'?MY:null,COMMON[LANG]];for(var i=0;i<a.length;i++)if(a[i]&&a[i][k]!=null)return a[i][k];return EN[k]}
   function split(){}
+  /* clean addresses: devices.html -> devices, index.html -> ./ (German pages: de/...) */
+  var DEP=['index','devices','it-admin','play'];
+  function url(p){var m=String(p).match(/^(de\/)?([\w-]+)\.html(#.*)?$/);if(!m)return p;var n=m[2],de=DEP.indexOf(n)>-1&&(m[1]||LANG==='de')?'de/':'';var path=n==='index'?de:de+n;return(path||'./')+(m[3]||'')}
   function applyLang(l){
     LANG=LANGS.indexOf(l)>-1?l:'en';root.lang=LANG;
     $('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n'),v=TX(k);if(v!=null)el.innerHTML=v});
     $('[data-ph]').forEach(function(el){el.placeholder=T(el.getAttribute('data-ph'))});
     $('[data-aria]').forEach(function(el){el.setAttribute('aria-label',T(el.getAttribute('data-aria')))});
-    $('a[data-page]').forEach(function(a){a.href=a.getAttribute('data-page').replace(/(#|$)/,'?lang='+LANG+'$1')});
+    $('a[data-page]').forEach(function(a){a.setAttribute('href',url(a.getAttribute('data-page')))});
     $('[data-href-de]').forEach(function(a){a.href=a.getAttribute(LANG==='de'?'data-href-de':'data-href-en')});
     if(T('title'))document.title=T('title');var md=$('meta[name="description"]')[0];if(md&&T('desc'))md.content=T('desc');
     $('#lmenu [data-l]').forEach(function(s){var on=s.getAttribute('data-l')===LANG;s.classList.toggle('on',on);s.setAttribute('aria-checked',on?'true':'false')});
@@ -716,7 +773,7 @@ var PL={lang:'de',en:'index.html',de:'de/index.html'};
   function goLang(l){
     if(typeof PL==='undefined')return false;
     if(l==='de'&&PL.de&&PL.lang!=='de'){store('lang','de');location.href=PL.de+location.hash;return true}
-    if(l!=='de'&&PL.lang==='de'){store('lang',l);location.href=PL.en+'?lang='+l+location.hash;return true}
+    if(l!=='de'&&PL.lang==='de'){store('lang',l);location.href=PL.en+location.hash;return true}
     return false;
   }
   $('#lmenu [data-l]').forEach(function(b){b.onclick=function(){var l=b.getAttribute('data-l');if(goLang(l))return;applyLang(l);store('lang',LANG);lmenu(false);lb.focus()}});
@@ -742,7 +799,7 @@ var PL={lang:'de',en:'index.html',de:'de/index.html'};
   }
   function watch(list){list.forEach(function(el){el.classList.add('in')})}
   function count(el){el.textContent=el.dataset.to}
-  var markOn=false;function marks(){$('.mark').forEach(function(m){if(markOn)m.classList.add('on');else onView(m,function(){markOn=true;$('.mark').forEach(function(x){x.classList.add('on')})},.6)})}
+  var markOn=false;function marks(){$('.mark').forEach(function(m){if(markOn)m.classList.add('on','done');else onView(m,function(){markOn=true;$('.mark').forEach(function(x){x.classList.add('on');setTimeout(function(){x.classList.add('done')},1100)})},.6)})}
   hooks.push(marks);
 
   addEventListener('scroll',function(){scrollHooks.forEach(function(f){f()})},{passive:true});
@@ -780,6 +837,7 @@ var PL={lang:'de',en:'index.html',de:'de/index.html'};
 
   function initLang(){
     var q=null;try{q=new URLSearchParams(location.search).get('lang')}catch(e){}
+    if(q){if(LANGS.indexOf(q)<0)q=null;else store('lang',q);try{history.replaceState(null,'',location.pathname+location.hash)}catch(e){}}
     if(typeof PL!=='undefined'&&PL.lang==='de'){if(q&&q!=='de'&&goLang(q))return;applyLang('de');return}
     var l=q||read('lang')||(function(n){n=(n||'').toLowerCase();return n.indexOf('de')===0?'de':n.indexOf('my')===0?'my':'en'})(navigator.language);
     if(l==='de'&&typeof PL!=='undefined'&&PL.de){try{location.replace(PL.de+location.hash);return}catch(e){}}
