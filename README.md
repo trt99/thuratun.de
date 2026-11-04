@@ -7,7 +7,7 @@ This is the source of my portfolio website **[thuratun.de](https://thuratun.de)*
 - Static HTML, CSS and JavaScript, no framework, hosted on GitHub Pages
 - Pages: Home, Devices, Background, Playground, Impressum, Datenschutz, 404
 - Languages: English, German (`/de/`) and Burmese
-- `counts.json`, `banks.json` and `devices.json` are updated automatically by a GitHub Actions workflow
+- `data/counts.json`, `data/banks.json` and `data/devices.json` are updated automatically by a GitHub Actions workflow
 
 ## Contact
 

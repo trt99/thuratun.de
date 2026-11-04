@@ -1,7 +1,7 @@
 # Copies data from the published Google Sheet tab (thuratun.de) every 6 hours:
-#   columns A to C   payment method counts  -> counts.json
-#   "DE Bank List"   German banks            -> banks.json
-#   "Device" / OS / Category (3 columns)     -> devices.json
+#   columns A to C   payment method counts  -> data/counts.json
+#   "DE Bank List"   German banks            -> data/banks.json
+#   "Device" / OS / Category (3 columns)     -> data/devices.json
 # The website reads these files from GitHub, so visitors' browsers never contact Google.
 # When something changed, this workflow also publishes the site to GitHub Pages,
 # because commits made by a workflow do not start the normal Pages deployment.
@@ -69,7 +69,7 @@ jobs:
               de, other = num(cell(r, 1)), num(cell(r, 2))
               if de + other > 0:
                   counts.append([name, de, other])
-          save("counts.json", counts, "Counts")
+          save("data/counts.json", counts, "Counts")
 
           # German banks: the column whose header contains "bank"
           bcol = next((i for i, h in enumerate(head) if "bank" in h), None)
@@ -79,7 +79,7 @@ jobs:
                   name = cell(r, bcol)
                   if name and [name] not in banks:
                       banks.append([name])
-          save("banks.json", banks, "Banks")
+          save("data/banks.json", banks, "Banks")
 
           # Devices: the column with the header "Device", then OS and Category next to it
           dcol = next((i for i, h in enumerate(head) if h.startswith("device")), None)
@@ -89,16 +89,16 @@ jobs:
                   name = cell(r, dcol)
                   if name:
                       devices.append([name, cell(r, dcol + 1) or "N/A", cell(r, dcol + 2)])
-          save("devices.json", devices, "Devices")
+          save("data/devices.json", devices, "Devices")
           PY
 
       - name: Commit if changed
         id: commit
         run: |
-          if [ -n "$(git status --porcelain counts.json banks.json devices.json)" ]; then
+          if [ -n "$(git status --porcelain data/counts.json data/banks.json data/devices.json)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add counts.json banks.json devices.json
+            git add data/counts.json data/banks.json data/devices.json
             git commit -m "Update data from Google Sheet"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -121,13 +121,13 @@ jobs:
           ref: ${{ github.ref_name }}
 
       - name: Set up Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload site
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
