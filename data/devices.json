@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T07:08:10Z",
+  "updated": "2026-11-22T15:04:13Z",
   "rows": [
     [
       "Custom-built PC",
@@ -102,8 +102,13 @@
       "Mobile"
     ],
     [
+      "iPad Pro 13\" (M5)",
+      "iPadOS 27.2.1",
+      "Tablet"
+    ],
+    [
       "iPad Air 2",
-      "iPadOS 15.5",
+      "iPadOS 15.8.8",
       "Tablet"
     ],
     [
